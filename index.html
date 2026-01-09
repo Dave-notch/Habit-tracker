@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+     <nav class="nav">
+      <div class="nav-container">
+        <div class="logo">𝔸𝕩𝕚𝕤</div>
+
+        <button class="menu-toggle" aria-label="Toggle menu">
+          ☰
+        </button>
+
+        <div class="nav-links">
+          <a href="#Home">Home</a>
+          <a href="#Track">Track</a>
+          <a href="#">Overview</a>
+        </div>
+      </div>
+    </nav>
+    <a id="Home" href=""></a>
+   <div class="bg-wrapper">
+    
+
+      <div class="hero">
+        <div class="hero_banner">Track your habits without  the effort</div>
+        <p class="hero_p">Interented? click this button down</p>
+        <a class="bg-green-200 rounded-xl text-center w-50 text-3xl text-black m-10   hover:bg-orange-100 hero_Btn" href="#Track">Get started</a>
+      </div>
+
+   </div>
+
+   <section id="Track"  class="Track-S">
+    <div class="text-white text-center text-3xl section-title">
+      <p class="inner-ttle" >Track Your Habits</p>
+    </div>
+
+    <div class="track-section">
+      
+    </div>
+
+
+    
+
+   </section>
+   <script>
+  const toggle = document.querySelector(".menu-toggle");
+  const links = document.querySelector(".nav-links");
+
+  toggle.addEventListener("click", () => {
+    links.classList.toggle("active");
+  });
+</script>
+
+  </body>
+</html>
