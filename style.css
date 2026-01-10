@@ -15,7 +15,7 @@ html, body {
   border-bottom-right-radius: 32px;
 
   overflow: hidden;
-  min-height: 88dvh;
+  min-height: 90dvh;
 }
 
 
@@ -93,8 +93,9 @@ nav {
     bottom: -6px;
     width: 0%;
     height: 2px;
-    background-color: rgb(220, 147, 10);
+    background-color: #4da3ff;
     transition: width 0.3s ease;
+    
 }
 
 
@@ -133,6 +134,39 @@ nav {
 .hero_Btn{
     margin-top: 2rem;
 }
+
+.Track-S {
+  background-image: url("trackbg.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+
+  overflow: hidden;
+  min-height: 90dvh;
+  
+}
+
+input{
+  padding: 0.9vh;
+  
+}
+
+.label{
+  font-size: medium;
+  padding-left: 0.5rem;
+}
+
+.Input-div{
+ 
+ 
+}
+
+
 
 
 /* Mobile */
