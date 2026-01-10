@@ -193,9 +193,17 @@ input{
   }
 }
 @media (max-width: 480px) {
-  /* .bg-wrapper {
-    min-height: 60vh; 
-  } */
+  .bg-wrapper {
+    min-height: 89dvh; 
+  }
+  .side-barB{
+    min-height: 89dvh;
+  }
+
+  .Track-S{
+    min-height: 85dvh;
+  }
+  
    
 }
 

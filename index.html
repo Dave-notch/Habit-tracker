@@ -44,8 +44,8 @@
    <div id="Track"  class="Track-S flex justify-center  items-center">
 
 
-    <div class="bg-green-200 w-450 h-200 rounded-2xl  shadow-2xl border border:blue-200 opacity-60 ">
-      <div class="bg-blue-200 w-150 h-200 rounded-2xl  shadow-2xl border border:blue-200 flex justify-center items-center">
+    <div class="bg-green-200 w-450 h-200 rounded-2xl  shadow-2xl border border:blue-200 opacity-60 side-barB">
+      <div class="bg-blue-200 w-150 h-200 rounded-2xl  shadow-2xl border border:blue-200 flex justify-center items-center side-barB">
                 <form class="flex flex-col gap-4">
                   <div>
               <label class="block  label text-sm font-semibold mb-1 ">Habit Name</label>
@@ -53,6 +53,7 @@
                 type="text"
                 placeholder="Enter habit name"
                 class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 px-4 py-2 outline-none focus:ring-1 focus:ring-black-200"
+                
               />
             </div>
 
@@ -60,6 +61,7 @@
             <div>
               <label class="block label text-sm font-semibold mb-1">Date</label>
               <input
+               id="date"
                 type="date"
                 class="w-full rounded-xl bg-gray-100 px-4 py-2 outline-none focus:ring-1 focus:ring-black-200"
               />
@@ -79,18 +81,18 @@
               <label class="block label text-sm font-semibold mb-2">Did you spend money?</label>
               <div class="flex gap-6">
                 <label class="flex items-center gap-2 ">
-                  <input type="radio" name="spent" class="accent-blue-500">
+                  <input id="yesCheck" type="radio" name="spent" class="accent-blue-500">
                   Yes
                 </label>
                 <label class="flex items-center gap-2 label">
-                  <input type="radio" name="spent" class="accent-blue-500">
+                  <input id="noCheck"  type="radio" name="spent" class="accent-blue-500">
                   No
                 </label>
               </div>
             </div>
 
             <!-- Amount -->
-            <div>
+            <div id="AmountSpent" class="hidden">
               <label class="block label text-sm font-semibold mb-1">Amount Spent ($)</label>
               <input
                 type="number"
@@ -106,9 +108,13 @@
             >
               Save Habit
             </button>
-                </form>
 
+            <button class="w-full bg-orange-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-blue-600 transition">
+              Show me the results
+            </button>
+                </form>
       </div>
+     
     </div>
     
     
@@ -116,10 +122,36 @@
    <script>
   const toggle = document.querySelector(".menu-toggle");
   const links = document.querySelector(".nav-links");
+  const AmountSpent=document.getElementById("AmountSpent");
+  const noCheck=document.getElementById("noCheck");
+  const yesCheck=document.getElementById("yesCheck");
+  const date=document.getElementById("date");
+
 
   toggle.addEventListener("click", () => {
     links.classList.toggle("active");
   });
+  
+  yesCheck.addEventListener("change",(e)=>{
+    if(e.target.checked){
+      AmountSpent.style.display="block"
+    }
+  })
+
+   noCheck.addEventListener("change",(e)=>{
+    if(e.target.checked){
+      AmountSpent.style.display="none"
+    }
+  })
+
+  date.addEventListener("input",(e)=>{
+    let showDate=e.target.value
+    console.log(showDate)
+  })
+
+
+
+
 </script>
 
   </body>
