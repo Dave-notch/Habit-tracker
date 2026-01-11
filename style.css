@@ -161,6 +161,11 @@ input{
   padding-left: 0.5rem;
 }
 
+.side-barB,
+.side-barc{
+  grid-template-rows: auto;
+}
+
 .Input-div{
  
  
@@ -196,8 +201,11 @@ input{
   .bg-wrapper {
     min-height: 89dvh; 
   }
-  .side-barB{
+  .side-barA{
     min-height: 89dvh;
+  }
+  .side-barB{
+    display: none;
   }
 
   .Track-S{

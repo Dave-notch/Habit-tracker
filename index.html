@@ -28,9 +28,9 @@
       </div>
     </nav>
     <a id="Home" href=""></a>
-   <div class="bg-wrapper">
+   <div  id="Home" class="bg-wrapper">
     
-
+      
       <div class="hero">
         <div class="hero_banner">Track your habits without  the effort</div>
         <p class="hero_p">Interented? click this button down</p>
@@ -38,14 +38,14 @@
       </div>
 
    </div>
+   </a>
     <div class="text-white text-center text-3xl section-title">
       <p class="inner-ttle" >Track Your Habits</p>
     </div>
    <div id="Track"  class="Track-S flex justify-center  items-center">
 
-
-    <div class="bg-green-200 w-450 h-200 rounded-2xl  shadow-2xl border border:blue-200 opacity-60 side-barB">
-      <div class="bg-blue-200 w-150 h-200 rounded-2xl  shadow-2xl border border:blue-200 flex justify-center items-center side-barB">
+   <div class="flex justify-center items-center">
+      <div class="bg-blue-200 w-150 h-200 rounded-2xl rounded-br-none rounded-tr-none shadow-2xl border border:blue-200 flex justify-center items-center side-barA opacity-75">
                 <form class="flex flex-col gap-4">
                   <div>
               <label class="block  label text-sm font-semibold mb-1 ">Habit Name</label>
@@ -104,6 +104,8 @@
             <!-- Submit -->
             <button
               type="submit"
+              id="Submit"
+              itemid=""
               class="w-full bg-blue-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-blue-600 transition"
             >
               Save Habit
@@ -114,8 +116,30 @@
             </button>
                 </form>
       </div>
+      <div class="bg-green-200 w-270 h-200 rounded-2xl rounded-bl-none rounded-tl-none  shadow-2xl border border:blue-200 opacity-60 flex justify-center items-center side-barB">
+        <div class="bg-orange-200 w-250 h-170 rounded-4xl shadow-3xl flex justify-center items-center ">
+          <div class="flex flex-col gap-2 ">
+            <div class="flex flex-row gap-30 text-xl justify-center">
+              <div>hour/min</div>
+              <div>seconds</div>
+              <div>days</div>
+              </div>
+              <div class="flex flex-row gap-4 text-white text-3xl">
+                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center"><span id="hours">00</span> : <span id="minutes">00</span></div>
+                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="seconds">00</div>
+                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="days">0</div>
+              </div>
+            </div>
+           
+          
+        </div>
+      </div>
+   </div>
+
+      
      
-    </div>
+    
+    
     
     
   </div>
@@ -126,6 +150,12 @@
   const noCheck=document.getElementById("noCheck");
   const yesCheck=document.getElementById("yesCheck");
   const date=document.getElementById("date");
+
+  let hours=document.getElementById("hours");
+  let minutes=document.getElementById("minutes");
+  let seconds=document.getElementById("seconds");
+  let days=document.getElementById("days");
+
 
 
   toggle.addEventListener("click", () => {
@@ -148,6 +178,60 @@
     let showDate=e.target.value
     console.log(showDate)
   })
+
+  const startingSeconds=1;
+  let time=startingSeconds;
+  let mincounter=0;
+  let hourCounter=0;
+  let dayCounter=0;
+
+  function updateSeconds(){
+    seconds.innerHTML=time
+    time--;
+
+    if(time<0){
+      time=startingSeconds
+      mincounter+=1
+      if (mincounter < 10) {
+      minutes.innerHTML = "0" + mincounter;
+    } else {
+      minutes.innerHTML = mincounter;
+    }
+    if(mincounter==1){
+      mincounter=0
+      hourCounter+=1
+      
+    }
+    if (hourCounter < 10) {
+      hours.innerHTML = "0" + hourCounter;
+    } else {
+      hours.innerHTML = hourCounter;
+    }
+    if(hourCounter==2){
+      hourCounter=0;
+      dayCounter+=1;
+
+    if (dayCounter < 10) {
+      days.innerHTML = "0" + dayCounter;
+    } else {
+      days.innerHTML = dayCounter;
+    }
+    }
+    }
+
+
+
+  }
+ 
+
+
+  let submit=document.getElementById("Submit");
+
+  submit.addEventListener("click", (event)=>{
+    submit=event.preventDefault()
+    setInterval(updateSeconds,1000)
+  })
+ 
 
 
 
