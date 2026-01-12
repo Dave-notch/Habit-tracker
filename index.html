@@ -49,10 +49,10 @@
                 <form class="flex flex-col gap-4">
                     <div>
               <label class="block label text-sm font-bold mb-1">do you wanna develop this habit or quit</label>
-               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10 font-semibold outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit select">
-                  <option value="indicating" class="">please choose one option</option>
-                  <option value="quiting">quiting</option>
-                  <option value="developing">developing</option>
+               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10  outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit select">
+                  <option value="indicating" class="text-sm">please choose one option</option>
+                  <option value="quiting" class="font-semibold">quiting</option>
+                  <option value="developing" class="font-semibold">developing</option>
                </select>
             </div> 
 
@@ -60,7 +60,7 @@
               <label class="block  label text-sm font-semibold mb-1 ">Habit Name</label>
               <input
                 id="nameHapit"
-                type="text"
+                type="search"
                 placeholder="Enter habit name"
                 class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 px-4 py-2 outline-none focus:ring-1 focus:ring-black-200"
                  />
@@ -76,7 +76,7 @@
               />
             </div>
 
-            <!-- Time -->
+            <!-- goal -->
             <div>
               <label class="block label text-sm font-semibold mb-1">Set goal</label>
               <input
@@ -146,11 +146,12 @@
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="seconds">00</div>
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="days">0</div>
               </div>
-              <div class="bg-green-200 w-230 h-130  rounded-4xl shadow-3xl flex justify-center items-center border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR-div ">
-                <div>
+              <div class="bg-green-200 w-230 h-130  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR-div ">
+                <div class="flex justify-center m-2">
                 <div >your habit is: <span class="text-red-500" id="habitName"></span></div>
-
-                <div>your started: <span class="text-red-500" id="option"> </span> this habit in <span class="text-blue-600" id="dateDisplay"> </span></div>
+                </div>
+                <div class="">
+                <div class="Hstarted">your started: <span class="text-red-500" id="option"> </span> this habit in <span class="text-blue-600" id="dateDisplay"> </span></div>
                 </div>
                 
 
@@ -203,18 +204,20 @@
     }
   })
 
-  date.addEventListener("input",(e)=>{
-    let showDate=e.target.value
-    console.log(showDate)
-  })
+  // date.addEventListener("input",(e)=>{
+  //   let showDate=e.target.value
+  //   console.log(showDate)
+  // })
 
-  const startingSeconds=59;
+  let startingSeconds=59;
   let time=startingSeconds;
   let mincounter=59;
   let hourCounter=23;
   let dayCounter=0;
+  let goalSet=document.getElementById("goalSet");
 
   function updateSeconds(){
+    let daysGoal=goalSet.target
      if (time < 10) {
       seconds.innerHTML = "0" + time;
     } else {
@@ -232,6 +235,8 @@
     } else {
       hours.innerHTML = hourCounter;
     }
+
+    
     
 
     if(time<0){
@@ -254,7 +259,7 @@
     }
     if(hourCounter==0){
       hourCounter=23;
-      dayCounter+=1;
+      dayCounter-=1;
 
     if (dayCounter < 10) {
       days.innerHTML = "0" + dayCounter;
@@ -262,6 +267,10 @@
     } else {
       days.innerHTML = dayCounter;
       daylabel.innerHTML="days"
+    }
+
+    if(days==0){
+      startingSeconds=0
     }
     
     }
@@ -271,6 +280,7 @@
 
   }
 
+
   let nameHapit=document.getElementById("nameHapit");
   let habitName=document.getElementById("habitName");
   let option=document.getElementById("option");
@@ -278,29 +288,52 @@
   let submit=document.getElementById("Submit");
   let showResults=document.getElementById("showResults");
 
-  submit.addEventListener("click", (event)=>{
-    submit=event.preventDefault()
+  function handleInput(e) {
+  e.target.value
+  }
+
+ 
+ let intervalStarted = false;
+
+
+  submit.addEventListener("click",(event)=>{
+    event.preventDefault()
+    let option=event
+
+     let hapit=nameHapit.value
+     habitName.innerHTML=hapit
+
+      let showDate=date.value
+      dateDisplay.innerHTML=showDate
+
+      
+
+      if(showDate==""){
+
+      }
   
+     if(!intervalStarted) {
+        setInterval(updateSeconds, 1000);
+        intervalStarted = true; 
+     }
     
-   
-    setInterval(updateSeconds,1000)
-  })
+
+    })
+    
+    
+    
+  
 
 
 
- nameHapit.addEventListener("input",(e)=>{
-  let hapit=e.target.value
-  habitName.innerHTML=hapit
 
- })
+
 
  showResults.addEventListener("click", ()=>{
 
  })
 
- function handleInput(e) {
-  e.target.value
-}
+
 
 
 
