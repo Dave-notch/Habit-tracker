@@ -40,21 +40,30 @@
    </div>
    </a>
     <div class="text-white text-center text-3xl section-title">
-      <p class="inner-ttle" >Track Your Habits</p>
+      <p class="inner-ttle bg-green-700 w-50 rounded-2xl" >Track Your Habits</p>
     </div>
    <div id="Track"  class="Track-S flex justify-center  items-center">
 
    <div class="flex justify-center items-center">
       <div class="bg-blue-200 w-150 h-200 rounded-2xl rounded-br-none rounded-tr-none shadow-2xl border border:blue-200 flex justify-center items-center side-barA opacity-75">
                 <form class="flex flex-col gap-4">
-                  <div>
+                    <div>
+              <label class="block label text-sm font-bold mb-1">do you wanna develop this habit or quit</label>
+               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10 font-semibold outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit select">
+                  <option value="indicating" class="">please choose one option</option>
+                  <option value="quiting">quiting</option>
+                  <option value="developing">developing</option>
+               </select>
+            </div> 
+
+            <div>
               <label class="block  label text-sm font-semibold mb-1 ">Habit Name</label>
               <input
+                id="nameHapit"
                 type="text"
                 placeholder="Enter habit name"
                 class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 px-4 py-2 outline-none focus:ring-1 focus:ring-black-200"
-                
-              />
+                 />
             </div>
 
             <!-- Date -->
@@ -69,12 +78,17 @@
 
             <!-- Time -->
             <div>
-              <label class="block label text-sm font-semibold mb-1">Time</label>
+              <label class="block label text-sm font-semibold mb-1">Set goal</label>
               <input
-                type="time"
+                id="goalSet"
+                type="text"
+                placeholder="Days or hours"
                 class="w-full rounded-xl bg-gray-100 px-4 py-2 outline-none focus:ring-1 focus:ring-black-200"
               />
             </div>
+
+
+          
 
             <!-- Spent Money -->
             <div>
@@ -111,8 +125,11 @@
               Save Habit
             </button>
 
-            <button class="w-full bg-orange-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-blue-600 transition">
+            <button id="showResults" class="w-full bg-orange-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-orange-600 transition showResults">
               Show me the results
+            </button>
+            <button id="addNewH" class="w-full bg-red-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-red-600 transition">
+              add new habit
             </button>
                 </form>
       </div>
@@ -124,12 +141,23 @@
               <div>seconds</div>
               <div id="daylabel">day</div>
               </div>
-              <div class="flex flex-row gap-4 text-white text-3xl">
+              <div class="flex flex-row gap-4 text-white text-3xl flex justify-center items-center">
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center"><span id="hours">00</span> : <span id="minutes">00</span></div>
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="seconds">00</div>
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="days">0</div>
               </div>
+              <div class="bg-green-200 w-230 h-130  rounded-4xl shadow-3xl flex justify-center items-center border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR-div ">
+                <div>
+                <div >your habit is: <span class="text-red-500" id="habitName"></span></div>
+
+                <div>your started: <span class="text-red-500" id="option"> </span> this habit in <span class="text-blue-600" id="dateDisplay"> </span></div>
+                </div>
+                
+
+              </div>
             </div>
+
+            
            
           
         </div>
@@ -242,18 +270,38 @@
 
 
   }
- 
 
-
+  let nameHapit=document.getElementById("nameHapit");
+  let habitName=document.getElementById("habitName");
+  let option=document.getElementById("option");
+  let dateDisplay=document.getElementById("dateDisplay");
   let submit=document.getElementById("Submit");
+  let showResults=document.getElementById("showResults");
 
   submit.addEventListener("click", (event)=>{
     submit=event.preventDefault()
+  
     
    
     setInterval(updateSeconds,1000)
   })
- 
+
+
+
+ nameHapit.addEventListener("input",(e)=>{
+  let hapit=e.target.value
+  habitName.innerHTML=hapit
+
+ })
+
+ showResults.addEventListener("click", ()=>{
+
+ })
+
+ function handleInput(e) {
+  e.target.value
+}
+
 
 
 

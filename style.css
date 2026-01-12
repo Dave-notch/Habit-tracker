@@ -16,7 +16,7 @@ html, body {
   border-bottom-right-radius: 32px;
 
   overflow: hidden;
-  min-height: 90dvh;
+  height: 96.3dvh;
   scroll-snap-align: start;
 }
 
@@ -30,7 +30,7 @@ html, body {
 }
 
 nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   backdrop-filter: blur(12px);
@@ -143,13 +143,12 @@ nav {
   background-position: center top;
   background-size: cover;
 
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
+ 
+
+  border-radius: 32px;
 
   overflow: hidden;
-  min-height: 97dvh;
+  height: 89.3dvh;
   scroll-snap-align: start;
   
 }
@@ -169,9 +168,12 @@ input{
   grid-template-rows: auto;
 }
 
-.Input-div{
- 
- 
+.innerGR-div{
+  margin-bottom: 0.5rem;
+}
+
+.showResults{
+  display: none;
 }
 
 
@@ -199,10 +201,12 @@ input{
   .nav-links.active {
     display: flex;
   }
+
+
 }
 @media (max-width: 480px) {
   .bg-wrapper {
-    min-height: 97dvh; 
+    height: 96dvh; 
   }
   .side-barA{
     min-height: 97dvh;
@@ -212,8 +216,11 @@ input{
   }
 
   .Track-S{
-    min-height: 85dvh;
+    height: 88.3dvh;
   }
+  .showResults{
+  display: block;
+}
   
    
 }
@@ -239,11 +246,3 @@ input{
 }
 }
 
- /* <div>
-              <label class="block label text-sm font-semibold mb-1">do you wanna develop this habit or quit</label>
-               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10 font-semibold outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit select">
-                  <option value="indicating" class="">please choose one option</option>
-                  <option value="quiting">quiting</option>
-                  <option value="developing">developing</option>
-               </select>
-            </div> */
