@@ -122,7 +122,7 @@
             <div class="flex flex-row gap-30 text-xl justify-center">
               <div>hour/min</div>
               <div>seconds</div>
-              <div>days</div>
+              <div id="daylabel">day</div>
               </div>
               <div class="flex flex-row gap-4 text-white text-3xl">
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center"><span id="hours">00</span> : <span id="minutes">00</span></div>
@@ -155,6 +155,7 @@
   let minutes=document.getElementById("minutes");
   let seconds=document.getElementById("seconds");
   let days=document.getElementById("days");
+  let daylabel=document.getElementById("daylabel");
 
 
 
@@ -179,27 +180,43 @@
     console.log(showDate)
   })
 
-  const startingSeconds=1;
+  const startingSeconds=59;
   let time=startingSeconds;
-  let mincounter=0;
-  let hourCounter=0;
+  let mincounter=59;
+  let hourCounter=23;
   let dayCounter=0;
 
   function updateSeconds(){
-    seconds.innerHTML=time
+     if (time < 10) {
+      seconds.innerHTML = "0" + time;
+    } else {
+      seconds.innerHTML = time;
+    }
+    
     time--;
+    if (mincounter < 10) {
+      minutes.innerHTML = "0" + mincounter;
+    } else {
+      minutes.innerHTML = mincounter;
+    }
+     if (hourCounter < 10) {
+      hours.innerHTML = "0" + hourCounter;
+    } else {
+      hours.innerHTML = hourCounter;
+    }
+    
 
     if(time<0){
       time=startingSeconds
-      mincounter+=1
+      mincounter-=1
       if (mincounter < 10) {
       minutes.innerHTML = "0" + mincounter;
     } else {
       minutes.innerHTML = mincounter;
     }
-    if(mincounter==1){
-      mincounter=0
-      hourCounter+=1
+    if(mincounter==0){
+      mincounter=59
+      hourCounter-=1
       
     }
     if (hourCounter < 10) {
@@ -207,15 +224,18 @@
     } else {
       hours.innerHTML = hourCounter;
     }
-    if(hourCounter==2){
-      hourCounter=0;
+    if(hourCounter==0){
+      hourCounter=23;
       dayCounter+=1;
 
     if (dayCounter < 10) {
       days.innerHTML = "0" + dayCounter;
+      daylabel.innerHTML="day"
     } else {
       days.innerHTML = dayCounter;
+      daylabel.innerHTML="days"
     }
+    
     }
     }
 
@@ -229,6 +249,8 @@
 
   submit.addEventListener("click", (event)=>{
     submit=event.preventDefault()
+    
+   
     setInterval(updateSeconds,1000)
   })
  

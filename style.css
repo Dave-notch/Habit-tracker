@@ -239,3 +239,11 @@ input{
 }
 }
 
+ /* <div>
+              <label class="block label text-sm font-semibold mb-1">do you wanna develop this habit or quit</label>
+               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10 font-semibold outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit select">
+                  <option value="indicating" class="">please choose one option</option>
+                  <option value="quiting">quiting</option>
+                  <option value="developing">developing</option>
+               </select>
+            </div> */
