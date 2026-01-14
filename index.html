@@ -47,9 +47,9 @@
    <div class="flex justify-center items-center">
       <div class="bg-blue-200 w-150 h-200 rounded-2xl rounded-br-none rounded-tr-none shadow-2xl border border:blue-200 flex justify-center items-center side-barA opacity-75">
                 <form class="flex flex-col gap-4">
-                    <div>
+            <div>
               <label class="block label text-sm font-bold mb-1">do you wanna develop this habit or quit</label>
-               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10  outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit select">
+               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10  outline-none mb-2 focus:ring-1 focus:ring-black-200" name="muuse" id="habit_select">
                   <option value="indicating" class="text-sm">please choose one option</option>
                   <option value="quiting" class="font-semibold">quiting</option>
                   <option value="developing" class="font-semibold">developing</option>
@@ -156,16 +156,16 @@
                 </div>
                 <div id="resultArea" class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
                   <div class="flex flex-row gap-70 flex justify-center items-center"> 
-                    <div class="text-black flex  items-center  w-50 h-10 text-center">you spent</div>
+                    <div class="text-black flex  items-center  w-50 h-10 text-center">the date you started</div>
                     <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="dateDisplay"></div>
                   </div>
-                  <div class="flex flex-row gap-70 flex justify-center items-center">
-                    <div class="text-black flex  items-center   w-50 h-10 ">you ali</div>
+                  <div class="flex flex-row gap-40 flex justify-center items-center">
+                    <div class="text-black flex  items-center   w-80 h-10 ">Quiting/Developing your habit</div>
                     <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="option"></div>
                   </div>
                   <div class="flex flex-row gap-70 flex justify-center items-center">
-                    <div class="text-black flex  items-center   w-50 h-10 ">you muuse</div>
-                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id=""></div>
+                    <div class="text-black flex  items-center   w-50 h-10 ">Goal in days</div>
+                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="goalDisplay"></div>
                   </div>
                   <div class="flex flex-row gap-70 flex justify-center items-center SpentON" id="SpentOn">
                     <div class="text-black flex items-center   w-50 h-10">you've spent</div>
@@ -209,6 +209,7 @@
   let resultArea=document.getElementById("resultArea");
   let Amount_Input=document.getElementById("Amount_Input");
   let SpentDisplay=document.getElementById("SpentDisplay");
+  let habit_select=document.getElementById("habit_select");
 
 
 
@@ -313,6 +314,7 @@
   let dateDisplay=document.getElementById("dateDisplay");
   let submit=document.getElementById("Submit");
   let showResults=document.getElementById("showResults");
+  let goalDisplay=document.getElementById("goalDisplay");
 
   function handleInput(e) {
   e.target.value
@@ -332,12 +334,23 @@
     let showDate=date.value
     dateDisplay.innerHTML=showDate
 
-     let spent=Amount_Input.value
-     SpentDisplay.innerHTML=`$${spent}`
+    let spent=Amount_Input.value
+    SpentDisplay.innerHTML=`$${spent}`
 
-    if(yes){
-
+    let daysGoal=goalSet.value
+    if(!daysGoal){
+      goalDisplay.innerHTML=""
+    }else{
+      goalDisplay.innerHTML=`${daysGoal} Days`
     }
+    
+
+
+    let select=habit_select.value
+    option.innerHTML=select
+
+
+   
 
       
 
