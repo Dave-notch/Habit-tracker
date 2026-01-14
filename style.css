@@ -42,7 +42,7 @@ nav {
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 16px 24px;
+  padding: 11px 20px;
 
   display: flex;
   align-items: center;
@@ -148,7 +148,7 @@ nav {
   border-radius: 32px;
 
   overflow: hidden;
-  height: 89.3dvh;
+  height: 91vh;
   scroll-snap-align: start;
   
 }
@@ -176,8 +176,16 @@ input{
   display: none;
 }
 
-.Hstarted{
-  margin-left: 3rem;
+
+.Col-Boxes{
+  margin-top: 1vh;
+  
+}
+.habitName{
+  margin-top: 1vh;
+}
+.SpentON{
+  opacity: 0;
 }
 
 
@@ -210,17 +218,17 @@ input{
 }
 @media (max-width: 480px) {
   .bg-wrapper {
-    height: 96dvh; 
+    height: 96.3dvh; 
   }
   .side-barA{
-    min-height: 97dvh;
+    min-height: 96dvh;
   }
   .side-barB{
     display: none;
   }
 
   .Track-S{
-    height: 88.3dvh;
+    height: 90dvh;
   }
   .showResults{
   display: block;

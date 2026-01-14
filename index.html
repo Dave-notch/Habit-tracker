@@ -40,7 +40,7 @@
    </div>
    </a>
     <div class="text-white text-center text-3xl section-title">
-      <p class="inner-ttle bg-green-700 w-50 rounded-2xl" >Track Your Habits</p>
+      <p class="inner-ttle " >Track Your Habits</p>
     </div>
    <div id="Track"  class="Track-S flex justify-center  items-center">
 
@@ -109,6 +109,7 @@
             <div id="AmountSpent" class="hidden">
               <label class="block label text-sm font-semibold mb-1">Amount Spent ($)</label>
               <input
+                id="Amount_Input"
                 type="number"
                 placeholder="0.00"
                 class="w-full rounded-xl bg-gray-100 px-4 py-2 outline-none focus:ring-1 focus:ring-black-200"
@@ -134,7 +135,7 @@
                 </form>
       </div>
       <div class="bg-green-200 w-270 h-200 rounded-2xl rounded-bl-none rounded-tl-none  shadow-2xl border border:blue-200 opacity-60 flex justify-center items-center side-barB">
-        <div class="bg-orange-200 w-250 h-170 rounded-4xl shadow-3xl flex justify-center items-center ">
+        <div class="bg-orange-200 w-250 h-180 rounded-4xl shadow-3xl flex justify-center items-center ">
           <div class="flex flex-col gap-2 ">
             <div class="flex flex-row gap-30 text-xl justify-center">
               <div>hour/min</div>
@@ -146,13 +147,32 @@
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="seconds">00</div>
                   <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="days">0</div>
               </div>
-              <div class="bg-green-200 w-230 h-130  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR-div ">
-                <div class="flex justify-center m-2">
-                <div >your habit is: <span class="text-red-500" id="habitName"></span></div>
+              <div class="bg-green-200 w-200 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR-div ">
+                <div class="flex justify-center">
+                <div id="habitName" class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
                 </div>
                 <div class="">
-                <div class="Hstarted">your started: <span class="text-red-500" id="option"> </span> this habit in <span class="text-blue-600" id="dateDisplay"> </span></div>
+                <div class="Hstarted"></div>
                 </div>
+                <div id="resultArea" class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
+                  <div class="flex flex-row gap-70 flex justify-center items-center"> 
+                    <div class="text-black flex  items-center  w-50 h-10 text-center">you spent</div>
+                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="dateDisplay"></div>
+                  </div>
+                  <div class="flex flex-row gap-70 flex justify-center items-center">
+                    <div class="text-black flex  items-center   w-50 h-10 ">you ali</div>
+                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="option"></div>
+                  </div>
+                  <div class="flex flex-row gap-70 flex justify-center items-center">
+                    <div class="text-black flex  items-center   w-50 h-10 ">you muuse</div>
+                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id=""></div>
+                  </div>
+                  <div class="flex flex-row gap-70 flex justify-center items-center SpentON" id="SpentOn">
+                    <div class="text-black flex items-center   w-50 h-10">you've spent</div>
+                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="SpentDisplay"></div>
+                  </div>
+                  
+              </div>
                 
 
               </div>
@@ -185,6 +205,10 @@
   let seconds=document.getElementById("seconds");
   let days=document.getElementById("days");
   let daylabel=document.getElementById("daylabel");
+  let SpentOn=document.getElementById("SpentOn");
+  let resultArea=document.getElementById("resultArea");
+  let Amount_Input=document.getElementById("Amount_Input");
+  let SpentDisplay=document.getElementById("SpentDisplay");
 
 
 
@@ -195,12 +219,14 @@
   yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="block"
+      SpentOn.style.opacity=1
     }
   })
 
    noCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="none"
+      SpentOn.style.opacity=0
     }
   })
 
@@ -303,8 +329,15 @@
      let hapit=nameHapit.value
      habitName.innerHTML=hapit
 
-      let showDate=date.value
-      dateDisplay.innerHTML=showDate
+    let showDate=date.value
+    dateDisplay.innerHTML=showDate
+
+     let spent=Amount_Input.value
+     SpentDisplay.innerHTML=`$${spent}`
+
+    if(yes){
+
+    }
 
       
 
