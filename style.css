@@ -172,7 +172,7 @@ input{
   margin-bottom: 0.5rem;
 }
 
-.showResults{
+#showResults{
   display: none;
 }
 
@@ -223,18 +223,28 @@ input{
   .side-barA{
     min-height: 96dvh;
   }
-  .side-barB{
+  #resultArea{
     display: none;
   }
 
   .Track-S{
     height: 90dvh;
+    
   }
-  .showResults{
+  #showResults{
   display: block;
 }
+ 
+
   
    
+}
+
+@media (max-width: 390px) {
+  .nav-container {
+ 
+  padding: 8px 20px;
+}
 }
 
 @media (hover: hover) {
