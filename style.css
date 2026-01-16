@@ -188,6 +188,10 @@ input{
   opacity: 0;
 }
 
+.FloatingBtn{
+  display: none;
+}
+
 
 
 
@@ -264,9 +268,15 @@ input{
 
   
   /* Timer boxes */
-  .Timer-boxes {
-    width: 20px;
-    height: 60px;
+  .Timer-boxes1 {
+    width: 80px;
+    height: 40px;
+  }
+
+  .Timer-boxes2{
+    width: 80px;
+    height: 40px;
+
   }
 
   #hours,
@@ -308,7 +318,7 @@ input{
 
   .innerGR2-div {
     width: 44vh;
-    height: 75dvh;
+    height: 72dvh;
     overflow: hidden;
     
   }
@@ -318,7 +328,12 @@ input{
     height: 60px !important;
     font-size: 1rem;
   }
- 
+  .FloatingBtn{
+    position: fixed;
+    right: 20px;
+    bottom: 32px;
+    display: block;
+  }
 
   
    

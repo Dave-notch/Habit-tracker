@@ -129,7 +129,7 @@
             <button id="showResults" class="w-full bg-orange-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-orange-600 transition">
               Show me the results
             </button>
-            <button id="addNewH" class="w-full bg-red-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-red-600 transition">
+            <button id="addNewH" class="w-full bg-red-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-red-600 transition addNewH">
               add new habit
             </button>
                 </form>
@@ -144,15 +144,15 @@
               </div>
               <div class="flex flex-col text-white text-3xl flex justify-center items-center">
                   <div class="flex flex-row gap-4">
-                    <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes rounded-bl-none rounded-br-none"><span id="hours">00</span> : <span id="minutes">00</span></div>
-                    <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes rounded-bl-none rounded-br-none" id="seconds">00</div>
-                    <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes rounded-bl-none rounded-br-none" id="days">0</div>
+                    <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span id="hours">00</span> : <span id="minutes">00</span></div>
+                    <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none" id="seconds">00</div>
+                    <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none" id="days">0</div>
                   </div>
 
                   <div class="flex flex-row gap-4">
-                    <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes rounded-tl-none rounded-tr-none"><span id="hours">00</span> : <span id="minutes">00</span></div>
-                    <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes rounded-tl-none rounded-tr-none" id="seconds">00</div>
-                    <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes rounded-tl-none rounded-tr-none" id="days">0</div>
+                    <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span id="RMhours">00</span> : <span id="RMminutes">00</span></div>
+                    <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none" id="RMseconds">00</div>
+                    <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none" id="RMdays">0</div>
                   </div>
               </div>
               <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
@@ -171,7 +171,7 @@
                     <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="option_select"></div>
                   </div>
                   <div class="flex flex-row gap-70 flex justify-center items-center ">
-                    <div class="text-black flex  items-center   w-50 h-10 text-indic">Goal in days</div>
+                    <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
                     <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="goalDisplay"></div>
                   </div>
                   <div class="flex flex-row gap-70 flex justify-center items-center SpentON " id="SpentOn">
@@ -192,224 +192,11 @@
       </div>
    </div>
 
-      
-     
-    
-    
-    
+
     
   </div>
-   <script>
-  const toggle = document.querySelector(".menu-toggle");
-  const links = document.querySelector(".nav-links");
-  const AmountSpent=document.getElementById("AmountSpent");
-  const noCheck=document.getElementById("noCheck");
-  const yesCheck=document.getElementById("yesCheck");
-  const date=document.getElementById("date");
-
-  let hours=document.getElementById("hours");
-  let minutes=document.getElementById("minutes");
-  let seconds=document.getElementById("seconds");
-  let days=document.getElementById("days");
-  let daylabel=document.getElementById("daylabel");
-  let SpentOn=document.getElementById("SpentOn");
-  let resultArea=document.getElementById("resultArea");
-  let Amount_Input=document.getElementById("Amount_Input");
-  let SpentDisplay=document.getElementById("SpentDisplay");
-  let habit_select=document.getElementById("habit_select");
-  let form_add=document.getElementById("form_add");
-
-
-
-  toggle.addEventListener("click", () => {
-    links.classList.toggle("active");
-  });
-  
-  yesCheck.addEventListener("change",(e)=>{
-    if(e.target.checked){
-      AmountSpent.style.display="block"
-      SpentOn.style.opacity=1
-    }
-  })
-
-   noCheck.addEventListener("change",(e)=>{
-    if(e.target.checked){
-      AmountSpent.style.display="none"
-      SpentOn.style.display="none"
-    }
-  })
-
-  // date.addEventListener("input",(e)=>{
-  //   let showDate=e.target.value
-  //   console.log(showDate)
-  // })
-
-  let startingSeconds=59;
-  let time=startingSeconds;
-  let mincounter=59;
-  let hourCounter=23;
-  let dayCounter=0;
-  let goalSet=document.getElementById("goalSet");
-
-  function updateSeconds(){
-    let daysGoal=goalSet.target
-     if (time < 10) {
-      seconds.innerHTML = "0" + time;
-    } else {
-      seconds.innerHTML = time;
-    }
-    
-    time--;
-    if (mincounter < 10) {
-      minutes.innerHTML = "0" + mincounter;
-    } else {
-      minutes.innerHTML = mincounter;
-    }
-     if (hourCounter < 10) {
-      hours.innerHTML = "0" + hourCounter;
-    } else {
-      hours.innerHTML = hourCounter;
-    }
-
-    
-    
-
-    if(time<0){
-      time=startingSeconds
-      mincounter-=1
-      if (mincounter < 10) {
-      minutes.innerHTML = "0" + mincounter;
-    } else {
-      minutes.innerHTML = mincounter;
-    }
-    if(mincounter==0){
-      mincounter=59
-      hourCounter-=1
-      
-    }
-    if (hourCounter < 10) {
-      hours.innerHTML = "0" + hourCounter;
-    } else {
-      hours.innerHTML = hourCounter;
-    }
-    if(hourCounter==0){
-      hourCounter=23;
-      dayCounter-=1;
-
-    if (dayCounter < 10) {
-      days.innerHTML = "0" + dayCounter;
-      daylabel.innerHTML="day"
-    } else {
-      days.innerHTML = dayCounter;
-      daylabel.innerHTML="days"
-    }
-
-    if(days==0){
-      startingSeconds=0
-    }
-    
-    }
-    }
-
-
-
-  }
-
-
-  let nameHapit=document.getElementById("nameHapit");
-  let habitName=document.getElementById("habitName");
-  let option_select=document.getElementById("option_select");
-  let dateDisplay=document.getElementById("dateDisplay");
-  let submit=document.getElementById("Submit");
-  let showResults=document.getElementById("showResults");
-  let goalDisplay=document.getElementById("goalDisplay");
-
-  function handleInput(e) {
-  e.target.value
-  }
-
- 
- let intervalStarted = false;
-
-  submit.addEventListener("click",(event)=>{
-    event.preventDefault()
-     let hapit=nameHapit.value
-        if(!hapit){
-          habitName.innerHTML=""
-          
-        }else{
-          habitName.innerHTML=hapit
-        }
-     
-
-    let showDate=date.value
-        if(!showDate){
-          dateDisplay.innerHTML=""
-          
-        }else{
-          dateDisplay.innerHTML=showDate
-        }
-
-    let spent=Amount_Input.value
-        if(!spent){
-          SpentDisplay.innerHTML=""
-          
-        }else{
-          SpentDisplay.innerHTML=`$ ${spent}`
-        }
-   
-
-    let daysGoal=goalSet.value
-        if(!daysGoal){
-          goalDisplay.innerHTML=""
-        }else{
-          goalDisplay.innerHTML=`${daysGoal} Days`
-        }
-    
-
-
-    let select=habit_select.value
-        if(select==""){
-          option_select.innerHTML=""
-          
-        }else{
-          option_select.innerHTML=select
-        }
-    
-  if(daysGoal  && showDate && hapit){
-     if(!intervalStarted) {
-        setInterval(updateSeconds, 1000);
-        intervalStarted = true; 
-     }
-  }
-
-    })
-    
-    
-    
-  
-
-
-
-
-
-
-//  showResults.addEventListener("click", ()=>{
-//   resultArea.style.display="block"
-//   form_add.style.display="none"
-  
-
-
-//  })
-
-
-
-
-
-
-
-</script>
-
+   <script src="app.js"></script>
+  <button id="FloatingBtn" class="bg-red-500 w-10 h-10 text-center text-white text-2xl rounded-xl FloatingBtn">ADD</button>
 
   </body>
 </html>
