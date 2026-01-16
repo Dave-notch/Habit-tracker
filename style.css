@@ -168,7 +168,7 @@ input{
   grid-template-rows: auto;
 }
 
-.innerGR-div{
+.innerGR2-div{
   margin-bottom: 0.5rem;
 }
 
@@ -222,10 +222,11 @@ input{
   }
   .side-barA{
     min-height: 96dvh;
-  }
-  #resultArea{
     display: none;
   }
+  /* .side-barB{
+    display: none;
+  } */
 
   .Track-S{
     height: 90dvh;
@@ -233,7 +234,93 @@ input{
   }
   #showResults{
   display: block;
-}
+  }
+  /* Outer container */
+  #resultArea {
+    width: 100dvh;
+    padding: 10px;
+    overflow-x: hidden;
+    border-radius: 20px;
+    height: 100dvh;
+  }
+
+  .side-barB {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+  .innerGR1-div {
+    width: 46%;
+    height: 88dvh;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 32px;
+  }
+
+  .timer-ttle{
+    gap: 70px;
+  }
+
+  /* Timer boxes */
+  .Timer-boxes {
+    width: 20px;
+    height: 60px;
+  }
+  #hours,
+  #minutes,
+  #seconds,
+  #days {
+    font-size: 2rem;
+  }
+
+  .Col-Boxes .flex-row {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+
+  /* Habit name */
+  .habitName {
+    width: 70%;
+    font-size: 1.5rem;
+  }
+
+  /* Date, option, goal, spent boxes */
+
+
+  /* Text labels */
+
+  .Col-Box{
+    width: 105px;
+    height: 105px;
+    
+  }
+
+  .text-indic{
+    font-size: 1rem;
+
+  }
+
+  .resultContentdiv{
+    width: 100%;
+    row-gap: 100px;
+    
+  }
+
+
+  /* Inner green box */
+  .innerGR2-div {
+    width: 44vh;
+    height: 75dvh;
+  }
+
+  /* Timer row boxes */
+  .flex-row > div.bg-red-400 {
+    width: 80px !important;
+    height: 60px !important;
+    font-size: 1rem;
+  }
  
 
   

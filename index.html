@@ -135,19 +135,19 @@
                 </form>
       </div>
       <div class="bg-green-200 w-270 h-200 rounded-2xl rounded-bl-none rounded-tl-none  shadow-2xl border border:blue-200 opacity-60 flex justify-center items-center side-barB" id="resultArea">
-        <div class="bg-orange-200 w-250 h-180 rounded-4xl shadow-3xl flex justify-center items-center ">
+        <div class="bg-orange-200 w-250 h-180 rounded-4xl shadow-3xl flex justify-center items-center innerGR1-div">
           <div class="flex flex-col gap-2 ">
-            <div class="flex flex-row gap-30 text-xl justify-center">
+            <div class="flex flex-row gap-30 text-xl justify-center timer-ttle">
               <div>hour/min</div>
               <div>seconds</div>
               <div id="daylabel">day</div>
               </div>
               <div class="flex flex-row gap-4 text-white text-3xl flex justify-center items-center">
-                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center"><span id="hours">00</span> : <span id="minutes">00</span></div>
-                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="seconds">00</div>
-                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center" id="days">0</div>
+                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center Timer-boxes"><span id="hours">00</span> : <span id="minutes">00</span></div>
+                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center Timer-boxes" id="seconds">00</div>
+                  <div class="bg-red-400 w-30 h-30 rounded-xl flex justify-center items-center Timer-boxes" id="days">0</div>
               </div>
-              <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR-div ">
+              <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
                 <div class="flex justify-center">
                 <div id="habitName" class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
                 </div>
@@ -155,21 +155,21 @@
                 <div class="Hstarted"></div>
                 </div>
                 <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
-                  <div class="flex flex-row gap-70 flex justify-center items-center"> 
-                    <div class="text-black flex  items-center  w-50 h-10 text-center">the date you started</div>
-                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="dateDisplay"></div>
+                  <div class="flex flex-row gap-70 flex justify-center items-center resultContentdiv"> 
+                    <div class="text-black flex  items-center  w-50 h-10 text-center text-indic">the date you started</div>
+                    <div class="bg-blue-400 w-[clamp(6rem,12vw,7.5rem)] h-[clamp(5rem,18vw,6.25rem)] rounded-xl flex justify-center items-center Col-Box" id="dateDisplay"></div>
                   </div>
-                  <div class="flex flex-row gap-40 flex justify-center items-center">
-                    <div class="text-black flex  items-center   w-80 h-10 ">Quiting/Developing your habit</div>
-                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="option_select"></div>
+                  <div class="flex flex-row gap-40 flex justify-center items-center resultContentdiv">
+                    <div class="text-black flex  items-center   w-80 h-10 text-indic">Quiting/Developing your habit</div>
+                    <div class="bg-blue-400 w-[clamp(6rem,12vw,7.5rem)] h-[clamp(5rem,18vw,6.25rem)] rounded-xl flex justify-center items-center Col-Box" id="option_select"></div>
                   </div>
-                  <div class="flex flex-row gap-70 flex justify-center items-center">
-                    <div class="text-black flex  items-center   w-50 h-10 ">Goal in days</div>
-                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="goalDisplay"></div>
+                  <div class="flex flex-row gap-70 flex justify-center items-center resultContentdiv">
+                    <div class="text-black flex  items-center   w-50 h-10 text-indic">Goal in days</div>
+                    <div class="bg-blue-400 w-[clamp(6rem,12vw,12vw)] h-[clamp(5rem,18vw,12vw)] rounded-xl flex justify-center items-center Col-Box" id="goalDisplay"></div>
                   </div>
-                  <div class="flex flex-row gap-70 flex justify-center items-center SpentON" id="SpentOn">
-                    <div class="text-black flex items-center   w-50 h-10" id="spentTtl">you've spent</div>
-                    <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center" id="SpentDisplay"></div>
+                  <div class="flex flex-row gap-70 flex justify-center items-center SpentON resultContentdiv" id="SpentOn">
+                    <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
+                    <div class="bg-blue-400 w-[clamp(6rem,12vw,7.5rem)] h-[clamp(5rem,18vw,6.25rem)] rounded-xl flex justify-center items-center Col-Box" id="SpentDisplay"></div>
                   </div>
                   
               </div>
@@ -387,13 +387,13 @@
 
 
 
- showResults.addEventListener("click", ()=>{
-  resultArea.style.display="block"
-  form_add.style.display="none"
+//  showResults.addEventListener("click", ()=>{
+//   resultArea.style.display="block"
+//   form_add.style.display="none"
   
 
 
- })
+//  })
 
 
 
@@ -402,6 +402,7 @@
 
 
 </script>
+
 
   </body>
 </html>
