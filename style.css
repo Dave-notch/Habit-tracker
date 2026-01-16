@@ -262,11 +262,13 @@ input{
     gap: 70px;
   }
 
+  
   /* Timer boxes */
   .Timer-boxes {
     width: 20px;
     height: 60px;
   }
+
   #hours,
   #minutes,
   #seconds,
@@ -275,21 +277,18 @@ input{
   }
 
   .Col-Boxes .flex-row {
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    gap: 50px;
     align-items: center;
   }
 
-  /* Habit name */
+
   .habitName {
     width: 70%;
     font-size: 1.5rem;
   }
 
-  /* Date, option, goal, spent boxes */
 
-
-  /* Text labels */
 
   .Col-Box{
     width: 105px;
@@ -298,24 +297,22 @@ input{
   }
 
   .text-indic{
-    font-size: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
 
   }
+  
 
-  .resultContentdiv{
-    width: 100%;
-    row-gap: 100px;
-    
-  }
+ 
 
 
-  /* Inner green box */
   .innerGR2-div {
     width: 44vh;
     height: 75dvh;
+    overflow: hidden;
+    
   }
 
-  /* Timer row boxes */
   .flex-row > div.bg-red-400 {
     width: 80px !important;
     height: 60px !important;
