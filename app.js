@@ -5,7 +5,11 @@
   let submit=document.getElementById("Submit");
   let showResults=document.getElementById("showResults");
   let goalDisplay=document.getElementById("goalDisplay");
-  let daysGoal=0;
+  let goalSet=document.getElementById("goalSet");
+  let RMdays=document.getElementById("RMdays");
+  let daysGoal;
+  
+
 
   
 
@@ -40,14 +44,15 @@
         }
    
 
-        daysGoal=goalSet.value
+        daysGoal=Number(goalSet.value)
         if(!daysGoal){
           goalDisplay.innerHTML=""
+          // RMdaysdisply.innerHTML=""
         }else{
           goalDisplay.innerHTML=`${daysGoal} Days`
-          RMdays.innerHTML=daysGoal
+          // RMdaysdisply.innerHTML=daysGoal
         }
-        remainingCounter(daysGoal)
+        
     
 
 
@@ -61,6 +66,7 @@
     
   if(daysGoal  && showDate && hapit){
      if(!intervalStarted) {
+        RMdaycounter=daysGoal
         setInterval(updateSeconds, 1000);
         setInterval(remainingCounter, 1)
         intervalStarted = true; 
@@ -113,7 +119,7 @@
   let RMhours=document.getElementById("RMhours");
   let RMminutes=document.getElementById("RMminutes");
   let RMseconds=document.getElementById("RMseconds");
-  let RMdays=document.getElementById("RMdays");
+  
 
 
 
@@ -149,7 +155,7 @@
   let mincounter=0;
   let hourCounter=0;
   let dayCounter=0;
-  let goalSet=document.getElementById("goalSet");
+
 
   function updateSeconds(){
      if (time < 10) {
@@ -224,9 +230,11 @@
   let mins=RMmincounter
   let RMhourCounter=5;
   let HRS=RMhourCounter
+  // let RMdaycounter;
 
 
   function remainingCounter(){
+    if (RMdaycounter == null) return;
     if (RMsecoCounter > 10) {
       RMseconds.innerHTML = secs;
     } else {
@@ -234,47 +242,47 @@
     }
 
     secs-=1
-  RMminutes.innerHTML = mins;
-  RMhours.innerHTML = HRS;
+  // RMminutes.innerHTML = mins;
+  // RMhours.innerHTML = HRS;
 
 
 
-    if(secs==0){
+    if(secs<0){
       secs=RMsecoCounter
       mins-=1
 
     
 
-    if(mins==0){
+    if(mins<0){
       mins=RMmincounter
       HRS-=1
     }
 
-    if(HRS==0){
+    if(HRS<0){
       HRS=RMhourCounter
-      daysGoal-=1
-      // RMhourCounter-=1
+      RMdaycounter--
     }
 
 
 
 
-    if (mins > 10) {
+
+    if (mins > 9) {
       RMminutes.innerHTML = mins;
     } else {
       RMminutes.innerHTML = "0" + mins;
     }
 
-    if (HRS > 10) {
+    if (HRS > 9) {
       RMhours.innerHTML = HRS;
     } else {
       RMhours.innerHTML = "0" + HRS;
     }
 
-     if (daysGoal > 10) {
-      goalDisplay.innerHTML = daysGoal;
+     if (RMdaycounter > 9) {
+      RMdays.innerHTML = RMdaycounter;
     } else {
-      goalDisplay.innerHTML = "0" + daysGoal;
+      RMdays.innerHTML = "0" + RMdaycounter;
     }
 
   }
