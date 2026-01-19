@@ -7,11 +7,18 @@
   let goalDisplay=document.getElementById("goalDisplay");
   let goalSet=document.getElementById("goalSet");
   let RMdays=document.getElementById("RMdays");
+
   let daysGoal;
-  
 
+  let YN_div=document.getElementById("YN_div");
+  let goal_div=document.getElementById("goal_div");
+  let option_div=document.getElementById("option_div");
+  let Date_div=document.getElementById("date_div");
+  let habit_div=document.getElementById("habit_div");
 
-  
+  let addNewH=document.getElementById("addNewH");
+  let FloatingBtn=document.getElementById("FloatingBtn");
+
 
  
  let intervalStarted = false;
@@ -47,11 +54,11 @@
         daysGoal=Number(goalSet.value)
         if(!daysGoal){
           goalDisplay.innerHTML=""
-          // RMdaysdisply.innerHTML=""
         }else{
           goalDisplay.innerHTML=`${daysGoal} Days`
-          // RMdaysdisply.innerHTML=daysGoal
         }
+
+ 
         
     
 
@@ -63,15 +70,47 @@
         }else{
           option_select.innerHTML=select
         }
+        RMdaycounter=daysGoal
     
   if(daysGoal  && showDate && hapit){
      if(!intervalStarted) {
-        RMdaycounter=daysGoal
         setInterval(updateSeconds, 1000);
-        setInterval(remainingCounter, 1)
+        setInterval(remainingCounter, 1000)
         intervalStarted = true; 
      }
+  option_div.style.display="none"
+  YN_div.style.display="none"
+  Date_div.style.display="none"
+  habit_div.style.display="none"
+  goal_div.style.display="none"
+  submit.style.display="none"
+  addNewH.style.display="block"
+
+   RMminutes.innerHTML = mins;
+  RMhours.innerHTML = HRS;
+  RMseconds.innerHTML=secs
+    if (daysGoal > 9) {
+      RMdays.innerHTML = daysGoal;
+    } else {
+      RMdays.innerHTML = "0" + daysGoal;
+    }
   }
+
+
+
+
+
+    })
+
+    addNewH.addEventListener("click",(event)=>{
+      event.preventDefault();
+        option_div.style.display="block"
+        YN_div.style.display="block"
+        Date_div.style.display="block"
+        habit_div.style.display="block"
+        goal_div.style.display="block"
+        submit.style.display="block"
+        addNewH.style.display="none"
 
     })
     
@@ -146,7 +185,7 @@
   //   let showDate=e.target.value
   //   console.log(showDate)
   // })
-  let startingSeconds=0;
+  let startingSeconds=1;
   let time=startingSeconds;
 
 
@@ -224,13 +263,14 @@
 
   }
 
-  let RMsecoCounter=60;
+  let RMsecoCounter=59;
   let secs=RMsecoCounter
-  let RMmincounter=5;
+  let RMmincounter=59;
   let mins=RMmincounter
-  let RMhourCounter=5;
+  let RMhourCounter=23;
   let HRS=RMhourCounter
-  // let RMdaycounter;
+
+
 
 
   function remainingCounter(){
@@ -242,9 +282,6 @@
     }
 
     secs-=1
-  // RMminutes.innerHTML = mins;
-  // RMhours.innerHTML = HRS;
-
 
 
     if(secs<0){
@@ -260,7 +297,14 @@
 
     if(HRS<0){
       HRS=RMhourCounter
-      RMdaycounter--
+      daysGoal--
+    }
+
+    if(daysGoal<=0){
+      daysGoal=0
+      HRS=0
+      mins=0
+      secs=0
     }
 
 
@@ -279,15 +323,20 @@
       RMhours.innerHTML = "0" + HRS;
     }
 
-     if (RMdaycounter > 9) {
-      RMdays.innerHTML = RMdaycounter;
+     if (daysGoal > 9) {
+      RMdays.innerHTML = daysGoal;
     } else {
-      RMdays.innerHTML = "0" + RMdaycounter;
+      RMdays.innerHTML = "0" + daysGoal;
     }
 
   }
 
   }
+
+
+
+
+  
 
 
   

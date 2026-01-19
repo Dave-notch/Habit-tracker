@@ -126,7 +126,7 @@ nav {
 
 
 .hero_banner{
-  font-size: clamp(1.5rem,8vw,4rem);
+  font-size: clamp(1.5rem,9vw,4rem);
 
   
 }
@@ -142,6 +142,15 @@ nav {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+
+  /* background: linear-gradient(to right, rgb(99, 13, 100), rgba(83,83,175,0.5));
+  background: linear-gradient(45deg, rgb(163, 163, 185), rgb(235, 18, 126));
+  background: linear-gradient(to right, rgb(42, 5, 23), rgb(192, 102, 19));
+  background: linear-gradient(to bottom, rgb(83, 83, 175), rgb(33, 221, 155)); */
+
+
+
+
 
  
 
@@ -189,6 +198,10 @@ input{
 }
 
 .FloatingBtn{
+  display: none;
+}
+
+.addNewH{
   display: none;
 }
 
@@ -295,7 +308,7 @@ input{
 
   .habitName {
     width: 70%;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
 
@@ -304,6 +317,10 @@ input{
     width: 105px;
     height: 105px;
     
+  }
+
+  .dateDisplay{
+    font-size: 1.7rem;
   }
 
   .text-indic{
