@@ -19,6 +19,8 @@
   let addNewH=document.getElementById("addNewH");
   let FloatingBtn=document.getElementById("FloatingBtn");
 
+  let resultAreaContent=document.getElementById("resultAreaContent");
+
 
  
  let intervalStarted = false;
