@@ -21,6 +21,8 @@
 
   let resultAreaContent=document.getElementById("resultAreaContent");
 
+  let ErrorMessage=document.getElementById("ErrorMessage");
+
 
  
  let intervalStarted = false;
@@ -86,6 +88,8 @@
   habit_div.style.display="none"
   goal_div.style.display="none"
   submit.style.display="none"
+  ErrorMessage.style.display="none"
+  Amount_Input.style.display="none"
   addNewH.style.display="block"
 
    RMminutes.innerHTML = mins;

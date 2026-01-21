@@ -205,6 +205,13 @@ input{
   display: none;
 }
 
+.innerGR3-div{
+  width: fit-content;
+  padding: 60px;
+  padding-top: 0;
+  padding-bottom: 0;
+
+}
 
 
 
@@ -351,6 +358,14 @@ input{
     bottom: 32px;
     display: block;
   }
+
+  .innerGR3-div{
+  width: fit-content;
+  padding: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
+
+}
 
   
    

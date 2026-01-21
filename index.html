@@ -131,16 +131,69 @@
             <button id="ErrorMessage" class="w-full bg-red-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-orange-600 transition animate-pulse">
               Error Message
             </button>
+            
+                </form>
             <div id="addNewH" class="w-[clamp(280px,90vw,420px)] bg-red-500 text-white h-10 text-3xl rounded-xl text-center font-semibold hover:bg-red-600 transition animate-pulse addNewH">
               add new habit
             </div>
-                </form>
       </div>
       <div class="bg-green-200 w-270 h-200 rounded-2xl rounded-bl-none rounded-tl-none  shadow-2xl border border:blue-200 opacity-60 flex justify-center items-center side-barB" id="resultArea">
-        <div class="bg-orange-200 w-250 h-180 rounded-4xl shadow-3xl gap-2 overflow-x-auto  overflow-y-hidden  innerGR1-div" id="resultAreaContent">
-          <div class="flex flex-row flex-nowrap justify-center items-center gap-14 w-max mx-auto">
+        <div class="bg-orange-200 w-250 h-180 rounded-4xl shadow-3xl gap-2 overflow-x-auto overflow-y-hidden innerGR1-div" id="resultAreaContent">
+          <div class="flex flex-row flex-nowrap gap-20 justify-center items-center innerGR3-div snap-x snap-mandatory">
             <!-- <div class="w-2 shrink-0"></div> -->
-             <div>
+             
+            <div class="snap-start">
+              <div class="flex flex-col gap-2 ">
+              <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
+                <div>hour/min</div>
+                <div>seconds</div>
+                <div id="daylabel">day</div>
+                </div>
+                <div class="flex flex-col text-white text-3xl flex justify-center items-center">
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span id="hours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span id="minutes">00</span></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none" id="seconds">00</div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none" id="days">0</div>
+                    </div>
+
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span id="RMhours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span id="RMminutes">00</span></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none" id="RMseconds">00</div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none" id="RMdays">0</div>
+                    </div>
+                </div>
+                <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
+                  <div class="flex justify-center">
+                  <div id="habitName" class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
+                  </div>
+                  <div class="">
+                  </div>
+                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
+                    <div class="flex flex-row gap-70 flex justify-center items-center "> 
+                      <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" id="dateDisplay"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Quiting or Developing</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="option_select"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="goalDisplay"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center SpentON " id="SpentOn">
+                      <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="SpentDisplay"></div>
+                    </div>
+                    
+                </div>
+                  
+
+                </div>
+              </div>
+             </div> 
+
+             <div >
               <div class="flex flex-col gap-2 ">
               <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
                 <div>hour/min</div>
@@ -191,7 +244,8 @@
               </div>
              </div>
 
-             <div>
+
+             <div class="snap-start">
               <div class="flex flex-col gap-2 ">
               <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
                 <div>hour/min</div>
