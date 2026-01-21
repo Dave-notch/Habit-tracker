@@ -283,7 +283,10 @@ input{
   }
 
   .timer-ttle{
-    gap: 70px;
+    gap: 40px;
+    padding: 100px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   

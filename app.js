@@ -89,7 +89,7 @@
   goal_div.style.display="none"
   submit.style.display="none"
   ErrorMessage.style.display="none"
-  Amount_Input.style.display="none"
+  AmountSpent.style.display="none"
   addNewH.style.display="block"
 
    RMminutes.innerHTML = mins;
@@ -116,7 +116,10 @@
         habit_div.style.display="block"
         goal_div.style.display="block"
         submit.style.display="block"
+        ErrorMessage.style.display="block"
+        AmountSpent.style.display="block"
         addNewH.style.display="none"
+        
 
     })
     
@@ -144,7 +147,7 @@
 
   const toggle = document.querySelector(".menu-toggle");
   const links = document.querySelector(".nav-links");
-  const AmountSpent=document.getElementById("AmountSpent");
+  let AmountSpent=document.getElementById("AmountSpent");
   const noCheck=document.getElementById("noCheck");
   const yesCheck=document.getElementById("yesCheck");
   const date=document.getElementById("date");
