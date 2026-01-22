@@ -101,6 +101,7 @@
           let yesCheck       = document.querySelector(".yesCheck");
           let AmountSpent      = document.querySelector(".AmountSpent");
           let SpentOn          = document.querySelector(".SpentOn");
+          let ErrorMessage=document.getElementById("ErrorMessage");
     yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="block"
@@ -122,11 +123,9 @@
 
 let nameHapit      = document.querySelector(".nameHapit");
 
-let option_select  = document.querySelector(".option_select");
-let dateDisplay    = document.querySelector(".dateDisplay");
+
 let submit         = document.querySelector(".Submit");
 let showResults    = document.querySelector(".showResults");
-let goalDisplay    = document.querySelector(".goalDisplay");
 let goalSet        = document.querySelector(".goalSet");
 let RMdays         = document.querySelector(".RMdays");
 
@@ -146,7 +145,7 @@ let habit_div      = document.querySelector(".habit_div");
 
  const resultAreaContent = document.querySelector(".resultAreaContent");
 
-  let ErrorMessage=document.getElementById("ErrorMessage");
+ 
   let inputform=document.querySelector(".inputform");
 
 
@@ -204,19 +203,14 @@ let habit_div      = document.querySelector(".habit_div");
   const links = document.querySelector(".nav-links");
   let date           = document.querySelector(".date");
 
-  let hours            = document.querySelector(".hours");
-  let minutes          = document.querySelector(".minutes");
-  let seconds          = document.querySelector(".seconds");
+
   let days             = document.querySelector(".days");
   let daylabel         = document.querySelector(".daylabel");
   let resultArea       = document.querySelector(".resultArea");
   let Amount_Input     = document.querySelector(".Amount_Input");
-  let SpentDisplay     = document.querySelector(".SpentDisplay");
   let habit_select     = document.querySelector(".habit_select");
 
-  let RMhours          = document.querySelector(".RMhours");
-  let RMminutes        = document.querySelector(".RMminutes");
-  let RMseconds        = document.querySelector(".RMseconds");
+
   
 
 
@@ -242,7 +236,137 @@ let habit_div      = document.querySelector(".habit_div");
   let dayCounter=0;
 
 
-  function updateSeconds(){
+
+
+   let newdiv=`<div class="snap-start">
+              <div class="flex flex-col gap-2 ">
+              <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
+                <div>hour/min</div>
+                <div>seconds</div>
+                <div class="daylabel">day</div>
+                </div>
+                <div class="flex flex-col text-white text-3xl flex justify-center items-center">
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span class="hours"></span><span style="font-weight:900;font-size:2rem;">:</span><span class="minutes"></span></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none seconds"></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none days"></div>
+                    </div>
+
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span class="RMhours"></span><span style="font-weight:900;font-size:2rem;">:</span><span class="RMminutes"></span></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMseconds"></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays"></div>
+                    </div>
+                </div>
+                <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
+                  <div class="flex justify-center">
+                  <div  class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
+                  </div>
+                  <div class="">
+                  </div>
+                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
+                    <div class="flex flex-row gap-70 flex justify-center items-center "> 
+                      <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" ></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Quiting or Developing</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box option_select"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box goalDisplay"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center SpentOn ">
+                      <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box SpentDisplay"></div>
+                    </div>
+                    
+                </div>
+                  
+
+                </div>
+              </div>
+             </div>`
+
+             
+
+
+
+       let intervalStarted = false;
+
+  submit.addEventListener("click",(event)=>{
+    event.preventDefault()
+    resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
+    let habitName      = document.querySelector(".habitName");
+    let dateDisplay    = document.querySelector(".dateDisplay");
+    let SpentDisplay     = document.querySelector(".SpentDisplay");
+    let goalDisplay    = document.querySelector(".goalDisplay");
+    let option_select  = document.querySelector(".option_select");
+    let RMdays         = document.querySelector(".RMdays");
+
+  let RMhours          = document.querySelector(".RMhours");
+  let RMminutes        = document.querySelector(".RMminutes");
+  let RMseconds        = document.querySelector(".RMseconds");
+
+  let hours            = document.querySelector(".hours");
+  let minutes          = document.querySelector(".minutes");
+  let seconds          = document.querySelector(".seconds");
+
+
+
+  let days            = document.querySelector(".days");
+  let daylabel         = document.querySelector(".daylabel");
+     let hapit=nameHapit.value
+        if(!hapit){
+          habitName.innerHTML=""
+          
+        }else{
+          habitName.innerHTML=hapit
+        }
+     
+
+    let showDate=date.value
+        if(!showDate){
+          dateDisplay.innerHTML=""
+          
+        }else{
+          dateDisplay.innerHTML=showDate
+        }
+
+    let spent=Amount_Input.value
+        if(!spent){
+          SpentDisplay.innerHTML=""
+          
+        }else{
+          SpentDisplay.innerHTML=`$ ${spent}`
+        }
+   
+
+        daysGoal=Number(goalSet.value)
+        if(!daysGoal){
+          goalDisplay.innerHTML=""
+        }else{
+          goalDisplay.innerHTML=`${daysGoal} Days`
+        }
+
+ 
+        
+    
+
+
+    let select=habit_select.value
+        if(select==""){
+          option_select.innerHTML=""
+          
+        }else{
+          option_select.innerHTML=select
+        }
+        RMdaycounter=daysGoal
+    
+  if(daysGoal  && showDate && hapit){
+     if(!intervalStarted) {
+        setInterval( function updateSeconds(){
      if (time < 10) {
       seconds.innerHTML = "0" + time;
     } else {
@@ -307,19 +431,8 @@ let habit_div      = document.querySelector(".habit_div");
 
    
 
-  }
-
-  let RMsecoCounter=59;
-  let secs=RMsecoCounter
-  let RMmincounter=59;
-  let mins=RMmincounter
-  let RMhourCounter=23;
-  let HRS=RMhourCounter
-
-
-
-
-  function remainingCounter(){
+  }, 1000);
+        setInterval(function remainingCounter(){
     if (RMdaycounter == null) return;
     if (RMsecoCounter > 10) {
       RMseconds.innerHTML = secs;
@@ -377,120 +490,7 @@ let habit_div      = document.querySelector(".habit_div");
 
   }
 
-  }
-
-   let newdiv=`<div class="snap-start">
-              <div class="flex flex-col gap-2 ">
-              <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
-                <div>hour/min</div>
-                <div>seconds</div>
-                <div class="daylabel">day</div>
-                </div>
-                <div class="flex flex-col text-white text-3xl flex justify-center items-center">
-                    <div class="flex flex-row gap-4">
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span class="hours"></span><span style="font-weight:900;font-size:2rem;">:</span><span class="minutes"></span></div>
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none seconds"></div>
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none days"></div>
-                    </div>
-
-                    <div class="flex flex-row gap-4">
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span class="RMhours"></span><span style="font-weight:900;font-size:2rem;">:</span><span class="RMminutes"></span></div>
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMseconds"></div>
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays"></div>
-                    </div>
-                </div>
-                <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
-                  <div class="flex justify-center">
-                  <div  class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
-                  </div>
-                  <div class="">
-                  </div>
-                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
-                    <div class="flex flex-row gap-70 flex justify-center items-center "> 
-                      <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" ></div>
-                    </div>
-                    <div class="flex flex-row gap-70 flex justify-center items-center ">
-                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Quiting or Developing</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box option_select"></div>
-                    </div>
-                    <div class="flex flex-row gap-70 flex justify-center items-center ">
-                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box goalDisplay"></div>
-                    </div>
-                    <div class="flex flex-row gap-70 flex justify-center items-center SpentOn ">
-                      <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box"></div>
-                    </div>
-                    
-                </div>
-                  
-
-                </div>
-              </div>
-             </div>`
-
-             
-
-
-
-       let intervalStarted = false;
-
-  submit.addEventListener("click",(event)=>{
-    event.preventDefault()
-    resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
-    let habitName      = document.querySelector(".habitName");
-     let hapit=nameHapit.value
-        if(!hapit){
-          habitName.innerHTML=""
-          
-        }else{
-          habitName.innerHTML=hapit
-        }
-     
-
-    let showDate=date.value
-        if(!showDate){
-          dateDisplay.innerHTML=""
-          
-        }else{
-          dateDisplay.innerHTML=showDate
-        }
-
-    let spent=Amount_Input.value
-        if(!spent){
-          SpentDisplay.innerHTML=""
-          
-        }else{
-          SpentDisplay.innerHTML=`$ ${spent}`
-        }
-   
-
-        daysGoal=Number(goalSet.value)
-        if(!daysGoal){
-          goalDisplay.innerHTML=""
-        }else{
-          goalDisplay.innerHTML=`${daysGoal} Days`
-        }
-
- 
-        
-    
-
-
-    let select=habit_select.value
-        if(select==""){
-          option_select.innerHTML=""
-          
-        }else{
-          option_select.innerHTML=select
-        }
-        RMdaycounter=daysGoal
-    
-  if(daysGoal  && showDate && hapit){
-     if(!intervalStarted) {
-        setInterval(updateSeconds, 1000);
-        setInterval(remainingCounter, 1000)
+  }, 1000)
         intervalStarted = true; 
      }
   option_div.style.display="none"
