@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
-    <link href="./dist/output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 
@@ -47,154 +46,17 @@
    <div id="Track"  class="Track-S flex justify-center  items-center">
 
    <div class="flex justify-center items-center">
-      <div class="bg-blue-200 w-150 h-200 rounded-2xl rounded-br-none rounded-tr-none shadow-2xl border border:blue-200 flex justify-center items-center side-barA opacity-75" id="form_add">
-                <form class="flex flex-col gap-4">
-            <div id="option_div">
-              <label class="block label text-sm font-bold mb-1">do you wanna develop this habit or quit</label>
-               <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10  outline-none mb-2 focus:ring-1 focus:ring-black-200" id="habit_select">
-                  <option value="" class="text-sm">please choose one option</option>
-                  <option value="quiting" class="font-semibold">quiting</option>
-                  <option value="developing" class="font-semibold">developing</option>
-               </select>
-            </div> 
-
-            <div id="habit_div">
-              <label class="block  label text-sm font-semibold mb-1 ">Habit Name</label>
-              <input
-                id="nameHapit"
-                type="search"
-                placeholder="Enter habit name"
-                class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 h-10 py-2 label outline-none focus:ring-1 focus:ring-black-200"
-                 />
-            </div>
-
-            <!-- Date -->
-            <div id="date_div">
-              <label class="block label text-sm font-semibold mb-1">Date</label>
-              <input
-               id="date"
-                type="date"
-                class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 h-10 py-2 label outline-none focus:ring-1 focus:ring-black-200"
-              />
-            </div>
-
-            <!-- goal -->
-            <div id="goal_div">
-              <label class="block label text-sm font-semibold mb-1">Set goal</label>
-              <input
-                id="goalSet"
-                type="text"
-                placeholder="Days or hours"
-                class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 h-10 label py-2 outline-none focus:ring-1 focus:ring-black-200"
-              />
-            </div>
-
-
-          
-
-            <!-- Spent Money -->
-            <div id="YN_div">
-              <label class="block label text-sm font-semibold mb-2">Did you spend money?</label>
-              <div class="flex gap-6">
-                <label class="flex items-center gap-2 ">
-                  <input id="yesCheck" type="radio" name="spent" class="accent-blue-500">
-                  Yes
-                </label>
-                <label class="flex items-center gap-2 label">
-                  <input id="noCheck"  type="radio" name="spent" class="accent-blue-500">
-                  No
-                </label>
-              </div>
-            </div>
-
-            <!-- Amount -->
-            <div id="AmountSpent" class="hidden">
-              <label class="block label text-sm font-semibold mb-1">Amount Spent $</label>
-              <input
-                id="Amount_Input"
-                type="number"
-                placeholder="0.00"
-                class="w-[clamp(280px,90vw,420px)] rounded-xl bg-gray-100 h-10 py-2 label outline-none focus:ring-1 focus:ring-black-200"
-              />
-            </div>
-
-            <!-- Submit -->
-            <button
-              type="submit"
-              id="Submit"
-              itemid=""
-              class="w-full bg-blue-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-blue-600 transition"
-            >
-              Save Habit
-            </button>
-
-            <button id="showResults" class="w-full bg-orange-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-orange-600 transition">
-              Show me the results
-            </button>
-            <button id="ErrorMessage" class="w-full bg-red-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-orange-600 transition animate-pulse">
-              Error Message
-            </button>
-            
-                </form>
+      <div class="bg-blue-200 w-150 h-200 rounded-2xl rounded-br-none rounded-tr-none shadow-2xl border border:blue-200 flex justify-center items-center side-barA opacity-75 form_add">
+                
             <div id="addNewH" class="w-[clamp(280px,90vw,420px)] bg-red-500 text-white h-10 text-3xl rounded-xl text-center font-semibold hover:bg-red-600 transition animate-pulse addNewH">
               add new habit
             </div>
       </div>
       <div class="bg-green-200 w-270 h-200 rounded-2xl rounded-bl-none rounded-tl-none  shadow-2xl border border:blue-200 opacity-60 flex justify-center items-center side-barB" id="resultArea">
         <div class="bg-orange-200 w-250 h-180 rounded-4xl shadow-3xl gap-2 overflow-x-auto overflow-y-hidden innerGR1-div">
-          <div class="flex flex-row flex-nowrap gap-20 justify-center items-center innerGR3-div snap-x snap-mandatory" id="resultAreaContent">
+          <div class="flex flex-row flex-nowrap gap-20 justify-center items-center innerGR3-div snap-x snap-mandatory  resultAreaContent">
             <!-- <div class="w-2 shrink-0"></div> -->
-              <div class="snap-start">
-              <div class="flex flex-col gap-2 ">
-              <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
-                <div>hour/min</div>
-                <div>seconds</div>
-                <div id="daylabel">day</div>
-                </div>
-                <div class="flex flex-col text-white text-3xl flex justify-center items-center">
-                    <div class="flex flex-row gap-4">
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span id="hours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span id="minutes">00</span></div>
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none" id="seconds">00</div>
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none" id="days">0</div>
-                    </div>
-
-                    <div class="flex flex-row gap-4">
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span id="RMhours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span id="RMminutes">00</span></div>
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none" id="RMseconds">00</div>
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none" id="RMdays">0</div>
-                    </div>
-                </div>
-                <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
-                  <div class="flex justify-center">
-                  <div id="habitName" class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
-                  </div>
-                  <div class="">
-                  </div>
-                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
-                    <div class="flex flex-row gap-70 flex justify-center items-center "> 
-                      <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" id="dateDisplay"></div>
-                    </div>
-                    <div class="flex flex-row gap-70 flex justify-center items-center ">
-                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Quiting or Developing</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="option_select"></div>
-                    </div>
-                    <div class="flex flex-row gap-70 flex justify-center items-center ">
-                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="goalDisplay"></div>
-                    </div>
-                    <div class="flex flex-row gap-70 flex justify-center items-center SpentON " id="SpentOn">
-                      <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box" id="SpentDisplay"></div>
-                    </div>
-                    
-                </div>
-                  
-
-                </div>
-              </div>
-             </div>
-
+            
           </div>
 
          
@@ -207,7 +69,7 @@
 
     
   </div>
-   <script src="main.js"></script>
+   <script src="app.js"></script>
   <button id="FloatingBtn" class="bg-red-500 w-10 h-10 text-center text-white text-2xl rounded-xl FloatingBtn">ADD</button>
 
   </body>

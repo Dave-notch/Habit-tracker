@@ -193,7 +193,7 @@ input{
 .habitName{
   margin-top: 1vh;
 }
-.SpentON{
+.SpentOn{
   opacity: 0;
 }
 
@@ -202,7 +202,7 @@ input{
 }
 
 .addNewH{
-  display: none;
+  display: block;
 }
 
 .innerGR3-div{

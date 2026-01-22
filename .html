@@ -1,0 +1,51 @@
+
+   let newdiv=`<div class="snap-start">
+              <div class="flex flex-col gap-2 ">
+              <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
+                <div>hour/min</div>
+                <div>seconds</div>
+                <div class="daylabel">day</div>
+                </div>
+                <div class="flex flex-col text-white text-3xl flex justify-center items-center">
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span class="hours">${hourCounter}</span><span style="font-weight:900;font-size:2rem;">:</span><span class="minutes">${mincounter}</span></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none seconds">${time}</div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none days">${dayCounter}</div>
+                    </div>
+
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span class="RMhours">${HRS}</span><span style="font-weight:900;font-size:2rem;">:</span><span class="RMminutes">${mins}</span></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMseconds">${secs}</div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays">${daysGoal}</div>
+                    </div>
+                </div>
+                <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
+                  <div class="flex justify-center">
+                  <div  class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName">${hapit}</div>
+                  </div>
+                  <div class="">
+                  </div>
+                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
+                    <div class="flex flex-row gap-70 flex justify-center items-center "> 
+                      <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" >${showDate}</div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Quiting or Developing</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box option_select">${select}</div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box goalDisplay">${daysGoal}</div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center SpentOn ">
+                      <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box">${spent}</div>
+                    </div>
+                    
+                </div>
+                  
+
+                </div>
+              </div>
+             </div>`
