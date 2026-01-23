@@ -51,10 +51,8 @@
              </div>`
 
 
-
-                
-   let addNewH=document.getElementById("addNewH"); 
-    let dynamicInput=` <form class="flex flex-col gap-4 " class="inputform">
+let addNewH=document.getElementById("addNewH"); 
+    let dynamicInput=` <form class="flex flex-col gap-4 inputform">
             <div class="option_div">
               <label class="block label text-sm font-bold mb-1">do you wanna develop this habit or quit</label>
                <select class="w-full label rounded-xl bg-gray-100 px-5 py-2 h-10  outline-none mb-2 focus:ring-1 focus:ring-black-200 habit_select">
@@ -122,7 +120,7 @@
 
             <!-- Submit -->
             <button
-              type="submit"
+              type="button"
               itemid=""
               class="w-full bg-blue-500 text-white h-10 text-xl rounded-xl font-semibold hover:bg-blue-600 transition Submit"
             >
@@ -138,6 +136,10 @@
             
                 </form>`
 
+                let form_add = document.querySelector(".form_add");
+
+                form_add.insertAdjacentHTML("beforeend", dynamicInput);
+
 
 
                  let newdiv=`<div class="snap-start">
@@ -149,15 +151,15 @@
                 </div>
                 <div class="flex flex-col text-white text-3xl flex justify-center items-center">
                     <div class="flex flex-row gap-4">
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span class="hours"></span><span style="font-weight:900;font-size:2rem;">:</span><span class="minutes"></span></div>
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none seconds"></div>
-                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none days"></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span class="hours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span class="minutes">00</span></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none seconds">0</div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none days">0</div>
                     </div>
 
                     <div class="flex flex-row gap-4">
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span class="RMhours"></span><span style="font-weight:900;font-size:2rem;">:</span><span class="RMminutes"></span></div>
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMseconds"></div>
-                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays"></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span class="RMhours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span class="RMminutes">00</span></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMseconds">0</div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays">0</div>
                     </div>
                 </div>
                 <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
@@ -192,19 +194,20 @@
              </div>`
           
 
-
+form_add.style.display="none"
 
     
 
                 
    addNewH.addEventListener("click",(event)=>{
       event.preventDefault();
-       let form_add = document.querySelector(".form_add");
+       form_add.style.display="block"
        
-      form_add.insertAdjacentHTML("beforeend", dynamicInput);
+      
       addNewH.style.display="none"
+        let form = form_add.lastElementChild;
 
-      let submit         = document.querySelector(".Submit");
+      let submit         = form.querySelector(".Submit");
 
 
           let noCheck        = document.querySelector(".noCheck");
@@ -233,19 +236,15 @@
   
 
 
-let nameHapit      = document.querySelector(".nameHapit");
+
 
 let showResults    = document.querySelector(".showResults");
-let goalSet        = document.querySelector(".goalSet");
+
 
 
 let daysGoal;
 
-let YN_div         = document.querySelector(".YN_div");
-let goal_div       = document.querySelector(".goal_div");
-let option_div     = document.querySelector(".option_div");
-let Date_div       = document.querySelector(".date_div");
-let habit_div      = document.querySelector(".habit_div");
+
 
 
 
@@ -255,7 +254,7 @@ let habit_div      = document.querySelector(".habit_div");
 
 
  
-  let inputform=document.querySelector(".inputform");
+  
 
 
  
@@ -312,14 +311,12 @@ let habit_div      = document.querySelector(".habit_div");
   const links = document.querySelector(".nav-links");
 
 
-  let date           = document.querySelector(".date");
+  
 
 
   let days             = document.querySelector(".days");
   let daylabel         = document.querySelector(".daylabel");
   let resultArea       = document.querySelector(".resultArea");
-  let Amount_Input     = document.querySelector(".Amount_Input");
-  let habit_select     = document.querySelector(".habit_select");
 
 
   
@@ -351,33 +348,45 @@ let habit_div      = document.querySelector(".habit_div");
 
              
 
+ let resultAreaContent = document.querySelector(".resultAreaContent");
 
+ 
 
-       let intervalStarted = false;
 
   submit.addEventListener("click",(event)=>{
     event.preventDefault()
+    
+resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
+       let intervalStarted = false;
+     
+ const card = resultAreaContent.lastElementChild; 
+
+     const form = event.target.closest("form");
 
 
- let resultAreaContent = document.querySelector(".resultAreaContent");
 
- resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
 
- let habitName      = document.querySelector(".habitName");
-    let dateDisplay    = document.querySelector(".dateDisplay");
-    let SpentDisplay     = document.querySelector(".SpentDisplay");
-    let goalDisplay    = document.querySelector(".goalDisplay");
-    let option_select  = document.querySelector(".option_select");
-    let RMdays         = document.querySelector(".RMdays");
+ let habitName = card.querySelector(".habitName");
 
-  let RMhours          = document.querySelector(".RMhours");
-  let RMminutes        = document.querySelector(".RMminutes");
-  let RMseconds        = document.querySelector(".RMseconds");
+  let dateDisplay   = card.querySelector(".dateDisplay");
+let SpentDisplay  = card.querySelector(".SpentDisplay");
+let goalDisplay   = card.querySelector(".goalDisplay");
+let option_select = card.querySelector(".option_select");
+let RMdays    = card.querySelector(".RMdays");
 
-  let hours            = document.querySelector(".hours");
-  let minutes          = document.querySelector(".minutes");
-  let seconds          = document.querySelector(".seconds");
+    let goalSet        = form.querySelector(".goalSet");
+    let Amount_Input     = form.querySelector(".Amount_Input");
+    let habit_select     = form.querySelector(".habit_select");
+    let nameHapit      = form.querySelector(".nameHapit");
 
+
+let RMhours   = card.querySelector(".RMhours");
+let RMminutes = card.querySelector(".RMminutes");
+let RMseconds = card.querySelector(".RMseconds");
+
+let hours   = card.querySelector(".hours");
+let minutes = card.querySelector(".minutes");
+let seconds = card.querySelector(".seconds");
 
   let mincounter=0;
   let hourCounter=0;
@@ -392,11 +401,10 @@ let habit_div      = document.querySelector(".habit_div");
   let HRS=RMhourCounter
    
     
+let inputform=document.querySelector(".inputform");
 
-
-
-  let days            = document.querySelector(".days");
-  let daylabel         = document.querySelector(".daylabel");
+let days      = card.querySelector(".days");
+let daylabel  = card.querySelector(".daylabel");
      let hapit=nameHapit.value
         if(!hapit){
           habitName.innerHTML=""
@@ -406,7 +414,7 @@ let habit_div      = document.querySelector(".habit_div");
         }
      
 
-    let showDate=date.value
+   let showDate = form.querySelector(".date").value;
         if(!showDate){
           dateDisplay.innerHTML=""
           
@@ -573,6 +581,9 @@ let habit_div      = document.querySelector(".habit_div");
   }, 1000)
         intervalStarted = true; 
      }
+
+     inputform.reset()
+     
   option_div.style.display="none"
   YN_div.style.display="none"
   Date_div.style.display="none"
@@ -582,7 +593,7 @@ let habit_div      = document.querySelector(".habit_div");
   AmountSpent.style.display="none"
   addNewH.style.display="block"
 
-   RMminutes.innerHTML = mins;
+  RMminutes.innerHTML = mins;
   RMhours.innerHTML = HRS;
   RMseconds.innerHTML=secs
     if (daysGoal > 9) {
@@ -595,13 +606,37 @@ let habit_div      = document.querySelector(".habit_div");
     
   }
 
+  
+
 
 
 
 
     })
 
+    let YN_div         = document.querySelector(".YN_div");
+    let goal_div       = document.querySelector(".goal_div");
+    let option_div     = document.querySelector(".option_div");
+    let Date_div       = document.querySelector(".date_div");
+    let habit_div      = document.querySelector(".habit_div");
+
+  option_div.style.display="block"
+  YN_div.style.display="block"
+  Date_div.style.display="block"
+  habit_div.style.display="block"
+  goal_div.style.display="block"
+  submit.style.display="block"
+  addNewH.style.display="none"
+
  })
+
+
+
+
+  
+
+
+  
 
 
 

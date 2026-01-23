@@ -201,7 +201,7 @@ let daysGoal;
 
 
  
-  let inputform=document.querySelector(".inputform");
+  
 
 
  
@@ -295,17 +295,17 @@ let daysGoal;
 
              
 
+ let resultAreaContent = document.querySelector(".resultAreaContent");
 
+ 
 
 
   submit.addEventListener("click",(event)=>{
     event.preventDefault()
-     event.stopPropagation(); 
-
+    
+resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
        let intervalStarted = false;
-      let resultAreaContent = document.querySelector(".resultAreaContent");
-
- resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
+     
  const card = resultAreaContent.lastElementChild; 
 
      const form = event.target.closest("form");
@@ -348,7 +348,7 @@ let seconds = card.querySelector(".seconds");
   let HRS=RMhourCounter
    
     
-
+let inputform=document.querySelector(".inputform");
 
 let days      = card.querySelector(".days");
 let daylabel  = card.querySelector(".daylabel");
@@ -528,6 +528,8 @@ let daylabel  = card.querySelector(".daylabel");
   }, 1000)
         intervalStarted = true; 
      }
+
+     inputform.reset()
      
   option_div.style.display="none"
   YN_div.style.display="none"
