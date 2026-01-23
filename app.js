@@ -83,6 +83,10 @@ let addNewH=document.getElementById("addNewH");
             
                 </form>`
 
+                let form_add = document.querySelector(".form_add");
+
+                form_add.insertAdjacentHTML("beforeend", dynamicInput);
+
 
 
                  let newdiv=`<div class="snap-start">
@@ -137,16 +141,16 @@ let addNewH=document.getElementById("addNewH");
              </div>`
           
 
-
+form_add.style.display="none"
 
     
 
                 
    addNewH.addEventListener("click",(event)=>{
       event.preventDefault();
-       let form_add = document.querySelector(".form_add");
+       form_add.style.display="block"
        
-      form_add.insertAdjacentHTML("beforeend", dynamicInput);
+      
       addNewH.style.display="none"
         let form = form_add.lastElementChild;
 
@@ -187,11 +191,7 @@ let showResults    = document.querySelector(".showResults");
 
 let daysGoal;
 
-let YN_div         = document.querySelector(".YN_div");
-let goal_div       = document.querySelector(".goal_div");
-let option_div     = document.querySelector(".option_div");
-let Date_div       = document.querySelector(".date_div");
-let habit_div      = document.querySelector(".habit_div");
+
 
 
 
@@ -528,6 +528,7 @@ let daylabel  = card.querySelector(".daylabel");
   }, 1000)
         intervalStarted = true; 
      }
+     
   option_div.style.display="none"
   YN_div.style.display="none"
   Date_div.style.display="none"
@@ -550,12 +551,27 @@ let daylabel  = card.querySelector(".daylabel");
     
   }
 
+  
+
 
 
 
 
     })
 
+    let YN_div         = document.querySelector(".YN_div");
+    let goal_div       = document.querySelector(".goal_div");
+    let option_div     = document.querySelector(".option_div");
+    let Date_div       = document.querySelector(".date_div");
+    let habit_div      = document.querySelector(".habit_div");
+
+  option_div.style.display="block"
+  YN_div.style.display="block"
+  Date_div.style.display="block"
+  habit_div.style.display="block"
+  goal_div.style.display="block"
+  submit.style.display="block"
+  addNewH.style.display="none"
 
  })
 
