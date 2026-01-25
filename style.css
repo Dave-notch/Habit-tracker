@@ -246,11 +246,11 @@ input{
   }
   .side-barA{
     min-height: 96dvh;
+    display: block;
+  }
+  .side-barB{
     display: none;
   }
-  /* .side-barB{
-    display: none;
-  } */
 
   .Track-S{
     height: 90dvh;

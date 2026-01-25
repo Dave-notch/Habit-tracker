@@ -83,10 +83,6 @@ let addNewH=document.getElementById("addNewH");
             
                 </form>`
 
-                let form_add = document.querySelector(".form_add");
-
-                form_add.insertAdjacentHTML("beforeend", dynamicInput);
-
 
 
                  let newdiv=`<div class="snap-start">
@@ -141,18 +137,18 @@ let addNewH=document.getElementById("addNewH");
              </div>`
           
 
-form_add.style.display="none"
 
     
 
                 
    addNewH.addEventListener("click",(event)=>{
       event.preventDefault();
-       form_add.style.display="block"
+       let form_add = document.querySelector(".form_add");
        
-      
+      form_add.insertAdjacentHTML("beforeend", dynamicInput);
       addNewH.style.display="none"
-        let form = form_add.lastElementChild;
+
+       let form = form_add.lastElementChild;
 
       let submit         = form.querySelector(".Submit");
 
@@ -348,7 +344,7 @@ let seconds = card.querySelector(".seconds");
   let HRS=RMhourCounter
    
     
-let inputform=document.querySelector(".inputform");
+let inputform=form.querySelector(".inputform");
 
 let days      = card.querySelector(".days");
 let daylabel  = card.querySelector(".daylabel");
