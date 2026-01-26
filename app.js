@@ -1,4 +1,5 @@
 let addNewH=document.getElementById("addNewH"); 
+
     let dynamicInput=` <form class="flex flex-col gap-4 inputform">
             <div class="option_div">
               <label class="block label text-sm font-bold mb-1">do you wanna develop this habit or quit</label>
@@ -135,48 +136,64 @@ let addNewH=document.getElementById("addNewH");
                 </div>
               </div>
              </div>`
-          
+             
 
+              
 
-    
+   
 
                 
    addNewH.addEventListener("click",(event)=>{
       event.preventDefault();
-       let form_add = document.querySelector(".form_add");
+
+      let form_add = document.querySelector(".form_add");
        
-      form_add.insertAdjacentHTML("beforeend", dynamicInput);
+      form_add.insertAdjacentHTML("beforeend", dynamicInput); 
       addNewH.style.display="none"
+          
+     let form = form_add.lastElementChild;
 
-       let form = form_add.lastElementChild;
-
-      let submit         = form.querySelector(".Submit");
+      
+      let inputform=form.querySelector(".inputform");
 
 
           let noCheck        = document.querySelector(".noCheck");
           let yesCheck       = document.querySelector(".yesCheck");
           let AmountSpent      = document.querySelector(".AmountSpent");
-          let SpentOn          = document.querySelector(".SpentOn");
+          
+          
           let ErrorMessage=document.getElementById("ErrorMessage");
-    yesCheck.addEventListener("change",(e)=>{
+
+      yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="block"
-      SpentOn.style.opacity=1
+       
+      
     }
   })
 
    noCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="none"
-      SpentOn.style.display="none"
+      
+     
     }
   })
+     
+      
+ 
+      
+      addNewH.style.display="none"
+       form_add.style.display="block"
+
+       
+ 
 
 
 
                 
   
-  
+
 
 
 
@@ -270,14 +287,15 @@ let daysGoal;
   toggle.addEventListener("click", () => {
     links.classList.toggle("active");
   });
+
+   })
   
 
   // date.addEventListener("input",(e)=>{
   //   let showDate=e.target.value
   //   console.log(showDate)
   // })
-  let startingSeconds=1;
-  let time=startingSeconds;
+ 
 
 
   
@@ -293,13 +311,14 @@ let daysGoal;
 
  let resultAreaContent = document.querySelector(".resultAreaContent");
 
- 
+     
+let submit         = card.querySelector(".Submit");
 
 
   submit.addEventListener("click",(event)=>{
     event.preventDefault()
-    
-resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
+    resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
+
        let intervalStarted = false;
      
  const card = resultAreaContent.lastElementChild; 
@@ -312,10 +331,12 @@ resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
  let habitName = card.querySelector(".habitName");
 
   let dateDisplay   = card.querySelector(".dateDisplay");
-let SpentDisplay  = card.querySelector(".SpentDisplay");
+let SpentDisplay  = document.querySelector(".SpentDisplay");
 let goalDisplay   = card.querySelector(".goalDisplay");
 let option_select = card.querySelector(".option_select");
-let RMdays    = card.querySelector(".RMdays");
+let SpentOn          = document.querySelector(".SpentOn");
+
+
 
     let goalSet        = form.querySelector(".goalSet");
     let Amount_Input     = form.querySelector(".Amount_Input");
@@ -326,10 +347,13 @@ let RMdays    = card.querySelector(".RMdays");
 let RMhours   = card.querySelector(".RMhours");
 let RMminutes = card.querySelector(".RMminutes");
 let RMseconds = card.querySelector(".RMseconds");
+let RMdays    = card.querySelector(".RMdays");
 
 let hours   = card.querySelector(".hours");
 let minutes = card.querySelector(".minutes");
 let seconds = card.querySelector(".seconds");
+ let startingSeconds=1;
+  let time=startingSeconds;
 
   let mincounter=0;
   let hourCounter=0;
@@ -344,7 +368,7 @@ let seconds = card.querySelector(".seconds");
   let HRS=RMhourCounter
    
     
-let inputform=form.querySelector(".inputform");
+
 
 let days      = card.querySelector(".days");
 let daylabel  = card.querySelector(".daylabel");
@@ -368,9 +392,13 @@ let daylabel  = card.querySelector(".daylabel");
     let spent=Amount_Input.value
         if(!spent){
           SpentDisplay.innerHTML=""
+          SpentOn.style.opacity=0
+           
           
         }else{
           SpentDisplay.innerHTML=`$ ${spent}`
+          SpentOn.style.opacity=1
+          
         }
    
 
@@ -394,10 +422,36 @@ let daylabel  = card.querySelector(".daylabel");
           option_select.innerHTML=select
         }
         RMdaycounter=daysGoal
+
+             
+    yesCheck.addEventListener("change",(e)=>{
+    if(e.target.checked){
+      AmountSpent.style.display="block"
+      SpentOn.style.opacity=1
+    }
+  })
+
+   noCheck.addEventListener("change",(e)=>{
+    if(e.target.checked){
+      AmountSpent.style.display="none"
+      SpentOn.style.display="none"
+    }
+  })
+
+      
     
   if(daysGoal  && showDate && hapit){
+      RMminutes.innerHTML = mins;
+        RMhours.innerHTML = HRS;
+        RMseconds.innerHTML=secs
+          if (daysGoal > 9) {
+            RMdays.innerHTML = daysGoal;
+          } else {
+            RMdays.innerHTML = "0" + daysGoal;
+          }
+    
      if(!intervalStarted) {
-        setInterval( function updateSeconds(){
+        setInterval(function updateSeconds(){
      if (time < 10) {
       seconds.innerHTML = "0" + time;
     } else {
@@ -521,36 +575,36 @@ let daylabel  = card.querySelector(".daylabel");
 
   }
 
+  
+
   }, 1000)
         intervalStarted = true; 
+         
+         form_add.style.display="none"
+           addNewH.style.display="block"
+                  
      }
 
-     inputform.reset()
+
      
-  option_div.style.display="none"
-  YN_div.style.display="none"
-  Date_div.style.display="none"
-  habit_div.style.display="none"
-  goal_div.style.display="none"
-  submit.style.display="none"
-  AmountSpent.style.display="none"
+     
+  // option_div.style.display="none"
+  // YN_div.style.display="none"
+  // Date_div.style.display="none"
+  // habit_div.style.display="none"
+  // goal_div.style.display="none"
+  // submit.style.display="none"
+  // AmountSpent.style.display="none"
   addNewH.style.display="block"
 
-  RMminutes.innerHTML = mins;
-  RMhours.innerHTML = HRS;
-  RMseconds.innerHTML=secs
-    if (daysGoal > 9) {
-      RMdays.innerHTML = daysGoal;
-    } else {
-      RMdays.innerHTML = "0" + daysGoal;
-    }
+ 
     
 
     
   }
 
   
-
+  
 
 
 
@@ -571,7 +625,7 @@ let daylabel  = card.querySelector(".daylabel");
   submit.style.display="block"
   addNewH.style.display="none"
 
- })
+
 
 
 
