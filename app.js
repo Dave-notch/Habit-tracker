@@ -49,7 +49,7 @@ let addNewH=document.getElementById("addNewH");
                   <input type="radio" name="spent" class="accent-blue-500 yesCheck">
                   Yes
                 </label>
-                <label class="flex items-center gap-2 label">
+                <label class="flex items-center gap-2 label hidden NO">
                   <input type="radio" name="spent" class="accent-blue-500 noCheck">
                   No
                 </label>
@@ -127,7 +127,7 @@ let addNewH=document.getElementById("addNewH");
                     </div>
                     <div class="flex flex-row gap-70 flex justify-center items-center SpentOn ">
                       <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
-                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box SpentDisplay"></div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box SpentDisplay">$ 0</div>
                     </div>
                     
                 </div>
@@ -138,28 +138,21 @@ let addNewH=document.getElementById("addNewH");
              </div>`
              
 
-              
-
-   
-
-                
-   addNewH.addEventListener("click",(event)=>{
-      event.preventDefault();
-
-      let form_add = document.querySelector(".form_add");
+              let form_add = document.querySelector(".form_add");
        
       form_add.insertAdjacentHTML("beforeend", dynamicInput); 
       addNewH.style.display="none"
           
-     let form = form_add.lastElementChild;
+let form = form_add.lastElementChild;
 
-      
+      let submit         = form.querySelector(".Submit");
       let inputform=form.querySelector(".inputform");
 
 
-          let noCheck        = document.querySelector(".noCheck");
-          let yesCheck       = document.querySelector(".yesCheck");
-          let AmountSpent      = document.querySelector(".AmountSpent");
+          let noCheck        = form.querySelector(".noCheck");
+          let NO        = form.querySelector(".NO");
+          let yesCheck       = form.querySelector(".yesCheck");
+          let AmountSpent      = form.querySelector(".AmountSpent");
           
           
           let ErrorMessage=document.getElementById("ErrorMessage");
@@ -167,6 +160,7 @@ let addNewH=document.getElementById("addNewH");
       yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="block"
+      NO.style.display="block"
        
       
     }
@@ -175,10 +169,17 @@ let addNewH=document.getElementById("addNewH");
    noCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="none"
+      NO.style.display="none"
       
      
     }
   })
+
+   
+
+                
+   addNewH.addEventListener("click",(event)=>{
+      event.preventDefault();
      
       
  
@@ -202,7 +203,7 @@ let showResults    = document.querySelector(".showResults");
 
 
 
-let daysGoal;
+
 
 
 
@@ -307,21 +308,21 @@ let daysGoal;
 
   
 
-             
+let counter=0
 
  let resultAreaContent = document.querySelector(".resultAreaContent");
 
-     
-let submit         = card.querySelector(".Submit");
+ let daysGoal; 
 
+ let emptyMessege=document.getElementById("emptyMessege");
+
+ let Counter=document.getElementById("Counter");
 
   submit.addEventListener("click",(event)=>{
     event.preventDefault()
     resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
-
-       let intervalStarted = false;
-     
- const card = resultAreaContent.lastElementChild; 
+    const card = resultAreaContent.lastElementChild; 
+ let intervalStarted = false;
 
      const form = event.target.closest("form");
 
@@ -331,10 +332,10 @@ let submit         = card.querySelector(".Submit");
  let habitName = card.querySelector(".habitName");
 
   let dateDisplay   = card.querySelector(".dateDisplay");
-let SpentDisplay  = document.querySelector(".SpentDisplay");
+let SpentDisplay  = card.querySelector(".SpentDisplay");
 let goalDisplay   = card.querySelector(".goalDisplay");
 let option_select = card.querySelector(".option_select");
-let SpentOn          = document.querySelector(".SpentOn");
+let SpentOn          = card.querySelector(".SpentOn");
 
 
 
@@ -391,7 +392,7 @@ let daylabel  = card.querySelector(".daylabel");
 
     let spent=Amount_Input.value
         if(!spent){
-          SpentDisplay.innerHTML=""
+          SpentDisplay.opacity=0
           SpentOn.style.opacity=0
            
           
@@ -578,32 +579,34 @@ let daylabel  = card.querySelector(".daylabel");
   
 
   }, 1000)
-        intervalStarted = true; 
-         
-         form_add.style.display="none"
-           addNewH.style.display="block"
+     
+           
                   
      }
 
 
      
-     
-  // option_div.style.display="none"
-  // YN_div.style.display="none"
-  // Date_div.style.display="none"
-  // habit_div.style.display="none"
-  // goal_div.style.display="none"
-  // submit.style.display="none"
-  // AmountSpent.style.display="none"
-  addNewH.style.display="block"
+        intervalStarted = true; 
+        NO.style.display="none"
+        emptyMessege.style.display="none"
+         
+         form_add.style.display="none"
+           addNewH.style.display="block"
+           form.reset()
+           AmountSpent.style.display="none"
 
- 
+           counter+=1
+           Counter.innerHTML=counter
+           
+
+
+
+   
     
 
     
   }
 
-  
   
 
 

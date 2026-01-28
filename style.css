@@ -142,24 +142,21 @@ nav {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-
-  /* background: linear-gradient(to right, rgb(99, 13, 100), rgba(83,83,175,0.5));
-  background: linear-gradient(45deg, rgb(163, 163, 185), rgb(235, 18, 126));
-  background: linear-gradient(to right, rgb(42, 5, 23), rgb(192, 102, 19));
-  background: linear-gradient(to bottom, rgb(83, 83, 175), rgb(33, 221, 155)); */
-
-
-
-
-
- 
-
   border-radius: 32px;
+  overflow: hidden;
+  height: 96.3vh;
+  scroll-snap-align: start;
+}
 
+.Overview-S {
+  background-image: url("overview.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  border-radius: 32px;
   overflow: hidden;
   height: 91vh;
   scroll-snap-align: start;
-  
 }
 
 input{
@@ -212,6 +209,15 @@ input{
   padding-bottom: 0;
 
 }
+
+ .emptyMessege{
+  display: flex;
+  justify-content: center;
+  margin-top: 33vh;
+  font-size: 2rem;
+  color: rgb(158, 128, 128);
+ }
+ 
 
 
 
