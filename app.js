@@ -1,4 +1,15 @@
 let addNewH=document.getElementById("addNewH"); 
+let FloatingBtn=document.getElementById("FloatingBtn");
+let showResults = document.querySelector(".showResults");
+let resultArea  = document.querySelector(".resultArea");
+
+
+const toggle = document.querySelector(".menu-toggle");
+const links = document.querySelector(".nav-links");
+
+toggle.addEventListener("click", () => {
+links.classList.toggle("active");
+  });
 
     let dynamicInput=` <form class="flex flex-col gap-4 inputform">
             <div class="option_div">
@@ -199,30 +210,9 @@ let form = form_add.lastElementChild;
 
 
 
-let showResults    = document.querySelector(".showResults");
 
 
 
-
-
-
-
-
-
-
- 
-  let FloatingBtn=document.getElementById("FloatingBtn");
-
-
- 
-  
-
-
- 
-
-
-
- 
 
 
 
@@ -268,16 +258,6 @@ let showResults    = document.querySelector(".showResults");
 
 
 
-  const toggle = document.querySelector(".menu-toggle");
-  const links = document.querySelector(".nav-links");
-
-
-  
-
-
-  let days             = document.querySelector(".days");
-  let daylabel         = document.querySelector(".daylabel");
-  let resultArea       = document.querySelector(".resultArea");
 
 
   
@@ -285,9 +265,13 @@ let showResults    = document.querySelector(".showResults");
 
 
 
-  toggle.addEventListener("click", () => {
-    links.classList.toggle("active");
-  });
+
+  
+
+
+
+
+
 
    })
   
@@ -428,14 +412,14 @@ let daylabel  = card.querySelector(".daylabel");
     yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="block"
-      SpentOn.style.opacity=1
+     
     }
   })
 
    noCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="none"
-      SpentOn.style.display="none"
+      
     }
   })
 

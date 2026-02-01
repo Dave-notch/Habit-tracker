@@ -3,7 +3,7 @@ html, body {
   background-color: #0b0f1a;
   height: 100%;
   font-family: smooch sans;
-  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 .bg-wrapper {
@@ -17,7 +17,6 @@ html, body {
 
   overflow: hidden;
   height: 96.3dvh;
-  scroll-snap-align: start;
 }
 
 
@@ -144,8 +143,7 @@ nav {
   background-size: cover;
   border-radius: 32px;
   overflow: hidden;
-  height: 96.3vh;
-  scroll-snap-align: start;
+  height: 91dvh;
 }
 
 .Overview-S {
@@ -155,8 +153,7 @@ nav {
   background-size: cover;
   border-radius: 32px;
   overflow: hidden;
-  height: 91vh;
-  scroll-snap-align: start;
+  height: 91dvh;
 }
 
 input{
