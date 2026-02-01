@@ -97,7 +97,7 @@ links.classList.toggle("active");
 
 
 
-                 let newdiv=`<div class="snap-start">
+    let newdiv=`<div class="snap-start">
               <div class="flex flex-col gap-2 ">
               <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
                 <div>hour/min</div>
@@ -159,21 +159,16 @@ let form = form_add.lastElementChild;
       let submit         = form.querySelector(".Submit");
       let inputform=form.querySelector(".inputform");
 
-
           let noCheck        = form.querySelector(".noCheck");
           let NO        = form.querySelector(".NO");
           let yesCheck       = form.querySelector(".yesCheck");
           let AmountSpent      = form.querySelector(".AmountSpent");
           
-          
-          let ErrorMessage=document.getElementById("ErrorMessage");
 
       yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
       AmountSpent.style.display="block"
-      NO.style.display="block"
-       
-      
+      NO.style.display="block" 
     }
   })
 
@@ -181,159 +176,49 @@ let form = form_add.lastElementChild;
     if(e.target.checked){
       AmountSpent.style.display="none"
       NO.style.display="none"
-      
-     
     }
   })
-
-   
 
                 
    addNewH.addEventListener("click",(event)=>{
       event.preventDefault();
      
-      
- 
-      
       addNewH.style.display="none"
        form_add.style.display="block"
-
-       
- 
-
-
-
-                
-  
-
-
-
-
-
-
-
-
-
-
-
-    // addNewH.addEventListener("click",(event)=>{
-    //   event.preventDefault();
-    //     option_div.style.display="block"
-    //     YN_div.style.display="block"
-    //     Date_div.style.display="block"
-    //     habit_div.style.display="block"
-    //     goal_div.style.display="block"
-    //     submit.style.display="block"
-    //     ErrorMessage.style.display="block"
-    //     AmountSpent.style.display="block"
-    //     addNewH.style.display="none"
-
-
-       
-
-    //          resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
-        
-
-    // })
-    
-    
-    
-  
-
-
-
-
-
-
-//  showResults.addEventListener("click", ()=>{
-//   resultArea.style.display="block"
-//   form_add.style.display="none"
-  
-
-
-//  })
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
 
 
    })
   
 
-  // date.addEventListener("input",(e)=>{
-  //   let showDate=e.target.value
-  //   console.log(showDate)
-  // })
- 
 
 
   
 
-
-
-
-
-
-  
-
-let counter=0
-
+ let counter=0
  let resultAreaContent = document.querySelector(".resultAreaContent");
 
- let daysGoal; 
-
  let emptyMessege=document.getElementById("emptyMessege");
-
  let Counter=document.getElementById("Counter");
 
-  submit.addEventListener("click",(event)=>{
+ submit.addEventListener("click",(event)=>{
     event.preventDefault()
   
- let intervalStarted = false;
-
+     let intervalStarted = false;
      const form = event.target.closest("form");
-
-
-
-
-
-
-
-
-
-
-    // let goalSet        = form.querySelector(".goalSet");
-    // let Amount_Input     = form.querySelector(".Amount_Input");
-    // let habit_select     = form.querySelector(".habit_select");
-    // let nameHapit      = form.querySelector(".nameHapit");
 
     let hapit=form.querySelector(".nameHapit").value
     let showDate = form.querySelector(".date").value;
     let daysGoal=Number(form.querySelector(".goalSet").value)
     let select=form.querySelector(".habit_select").value
     let spent=form.querySelector(".Amount_Input").value
+    let ErrorMessage=form.querySelector(".ErrorMessage");
 
     if(hapit && showDate && daysGoal && select){
     resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
     const card = resultAreaContent.lastElementChild; 
 
     let dateDisplay   = card.querySelector(".dateDisplay");
+    
     let SpentDisplay  = card.querySelector(".SpentDisplay");
     let goalDisplay   = card.querySelector(".goalDisplay");
     let option_select = card.querySelector(".option_select");
@@ -373,15 +258,22 @@ let counter=0
     habitName.innerHTML=hapit
     dateDisplay.innerHTML=showDate
 
+     
         if(!spent){
           SpentDisplay.opacity=0
           SpentOn.style.opacity=0
            
           
+        }else{SpentDisplay.innerHTML=`$ 0${spent}`
+          SpentOn.style.opacity=1
+        } 
+          
+        if(spent<10){
+        SpentDisplay.innerHTML=`$ 0${spent}`
+        SpentOn.style.opacity=1
+          
         }else{
           SpentDisplay.innerHTML=`$ ${spent}`
-          SpentOn.style.opacity=1
-          
         }
 
   
@@ -550,12 +442,15 @@ let counter=0
            
 
 
+    }else if(!hapit || !showDate || !daysGoal || !select){
+      ErrorMessage.innerHTML="please fill the remaining form input"
+      ErrorMessage.style.display="block"
+      
+      setTimeout(()=>{
+       ErrorMessage.style.display="none"
 
-
-    
-
-
-    }else if(!hapit && !showDate && !daysGoal && !select){
+      },3000)
+      
       habitName.innerHTML=""
       dateDisplay.innerHTML=""
       goalDisplay.innerHTML=""
@@ -565,16 +460,6 @@ let counter=0
     }
 
     
-    
-
-
-   
-    
-
-
-
-    
-        
 
              
     yesCheck.addEventListener("change",(e)=>{
@@ -592,29 +477,12 @@ let counter=0
   })
 
       
-    
-
-
-  
 
 
 
 
     })
 
-  //   let YN_div         = document.querySelector(".YN_div");
-  //   let goal_div       = document.querySelector(".goal_div");
-  //   let option_div     = document.querySelector(".option_div");
-  //   let Date_div       = document.querySelector(".date_div");
-  //   let habit_div      = document.querySelector(".habit_div");
-
-  // option_div.style.display="block"
-  // YN_div.style.display="block"
-  // Date_div.style.display="block"
-  // habit_div.style.display="block"
-  // goal_div.style.display="block"
-  // submit.style.display="block"
-  // addNewH.style.display="none"
 
 
 
