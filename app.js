@@ -304,8 +304,7 @@ let counter=0
 
   submit.addEventListener("click",(event)=>{
     event.preventDefault()
-    resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
-    const card = resultAreaContent.lastElementChild; 
+  
  let intervalStarted = false;
 
      const form = event.target.closest("form");
@@ -313,68 +312,67 @@ let counter=0
 
 
 
- let habitName = card.querySelector(".habitName");
-
-  let dateDisplay   = card.querySelector(".dateDisplay");
-let SpentDisplay  = card.querySelector(".SpentDisplay");
-let goalDisplay   = card.querySelector(".goalDisplay");
-let option_select = card.querySelector(".option_select");
-let SpentOn          = card.querySelector(".SpentOn");
 
 
 
-    let goalSet        = form.querySelector(".goalSet");
-    let Amount_Input     = form.querySelector(".Amount_Input");
-    let habit_select     = form.querySelector(".habit_select");
-    let nameHapit      = form.querySelector(".nameHapit");
 
 
-let RMhours   = card.querySelector(".RMhours");
-let RMminutes = card.querySelector(".RMminutes");
-let RMseconds = card.querySelector(".RMseconds");
-let RMdays    = card.querySelector(".RMdays");
 
-let hours   = card.querySelector(".hours");
-let minutes = card.querySelector(".minutes");
-let seconds = card.querySelector(".seconds");
- let startingSeconds=1;
-  let time=startingSeconds;
+    // let goalSet        = form.querySelector(".goalSet");
+    // let Amount_Input     = form.querySelector(".Amount_Input");
+    // let habit_select     = form.querySelector(".habit_select");
+    // let nameHapit      = form.querySelector(".nameHapit");
 
-  let mincounter=0;
-  let hourCounter=0;
-  let dayCounter=0;
+    let hapit=form.querySelector(".nameHapit").value
+    let showDate = form.querySelector(".date").value;
+    let daysGoal=Number(form.querySelector(".goalSet").value)
+    let select=form.querySelector(".habit_select").value
+    let spent=form.querySelector(".Amount_Input").value
 
-  
-  let RMsecoCounter=59;
-  let secs=RMsecoCounter
-  let RMmincounter=59;
-  let mins=RMmincounter
-  let RMhourCounter=23;
-  let HRS=RMhourCounter
-   
-    
+    if(hapit && showDate && daysGoal && select){
+    resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
+    const card = resultAreaContent.lastElementChild; 
+
+    let dateDisplay   = card.querySelector(".dateDisplay");
+    let SpentDisplay  = card.querySelector(".SpentDisplay");
+    let goalDisplay   = card.querySelector(".goalDisplay");
+    let option_select = card.querySelector(".option_select");
+    let SpentOn          = card.querySelector(".SpentOn");
+    let habitName = card.querySelector(".habitName");
+
+    let days      = card.querySelector(".days");
+    let daylabel  = card.querySelector(".daylabel");
 
 
-let days      = card.querySelector(".days");
-let daylabel  = card.querySelector(".daylabel");
-     let hapit=nameHapit.value
-        if(!hapit){
-          habitName.innerHTML=""
-          
-        }else{
-          habitName.innerHTML=hapit
-        }
-     
+    let RMhours   = card.querySelector(".RMhours");
+    let RMminutes = card.querySelector(".RMminutes");
+    let RMseconds = card.querySelector(".RMseconds");
+    let RMdays    = card.querySelector(".RMdays");
 
-   let showDate = form.querySelector(".date").value;
-        if(!showDate){
-          dateDisplay.innerHTML=""
-          
-        }else{
-          dateDisplay.innerHTML=showDate
-        }
+    let hours   = card.querySelector(".hours");
+    let minutes = card.querySelector(".minutes");
+    let seconds = card.querySelector(".seconds");
+    let startingSeconds=1;
+      let time=startingSeconds;
 
-    let spent=Amount_Input.value
+      let mincounter=0;
+      let hourCounter=0;
+      let dayCounter=0;
+
+      
+      let RMsecoCounter=59;
+      let secs=RMsecoCounter
+      let RMmincounter=59;
+      let mins=RMmincounter
+      let RMhourCounter=23;
+      let HRS=RMhourCounter
+
+      RMdaycounter=daysGoal
+
+
+    habitName.innerHTML=hapit
+    dateDisplay.innerHTML=showDate
+
         if(!spent){
           SpentDisplay.opacity=0
           SpentOn.style.opacity=0
@@ -385,48 +383,16 @@ let daylabel  = card.querySelector(".daylabel");
           SpentOn.style.opacity=1
           
         }
-   
 
-        daysGoal=Number(goalSet.value)
-        if(!daysGoal){
-          goalDisplay.innerHTML=""
-        }else{
-          goalDisplay.innerHTML=`${daysGoal} Days`
-        }
+  
 
- 
-        
-    
+     goalDisplay.innerHTML=`${daysGoal} Days`
+
+     option_select.innerHTML=select
 
 
-    let select=habit_select.value
-        if(select==""){
-          option_select.innerHTML=""
-          
-        }else{
-          option_select.innerHTML=select
-        }
-        RMdaycounter=daysGoal
 
-             
-    yesCheck.addEventListener("change",(e)=>{
-    if(e.target.checked){
-      AmountSpent.style.display="block"
-     
-    }
-  })
-
-   noCheck.addEventListener("change",(e)=>{
-    if(e.target.checked){
-      AmountSpent.style.display="none"
-      
-    }
-  })
-
-      
-    
-  if(daysGoal  && showDate && hapit){
-      RMminutes.innerHTML = mins;
+     RMminutes.innerHTML = mins;
         RMhours.innerHTML = HRS;
         RMseconds.innerHTML=secs
           if (daysGoal > 9) {
@@ -585,11 +551,49 @@ let daylabel  = card.querySelector(".daylabel");
 
 
 
+
+    
+
+
+    }else if(!hapit && !showDate && !daysGoal && !select){
+      habitName.innerHTML=""
+      dateDisplay.innerHTML=""
+      goalDisplay.innerHTML=""
+      option_select.innerHTML=""
+      SpentDisplay.opacity=0
+      SpentOn.style.opacity=0
+    }
+
+    
+    
+
+
    
     
 
+
+
     
-  }
+        
+
+             
+    yesCheck.addEventListener("change",(e)=>{
+    if(e.target.checked){
+      AmountSpent.style.display="block"
+     
+    }
+  })
+
+   noCheck.addEventListener("change",(e)=>{
+    if(e.target.checked){
+      AmountSpent.style.display="none"
+      
+    }
+  })
+
+      
+    
+
 
   
 
@@ -598,19 +602,19 @@ let daylabel  = card.querySelector(".daylabel");
 
     })
 
-    let YN_div         = document.querySelector(".YN_div");
-    let goal_div       = document.querySelector(".goal_div");
-    let option_div     = document.querySelector(".option_div");
-    let Date_div       = document.querySelector(".date_div");
-    let habit_div      = document.querySelector(".habit_div");
+  //   let YN_div         = document.querySelector(".YN_div");
+  //   let goal_div       = document.querySelector(".goal_div");
+  //   let option_div     = document.querySelector(".option_div");
+  //   let Date_div       = document.querySelector(".date_div");
+  //   let habit_div      = document.querySelector(".habit_div");
 
-  option_div.style.display="block"
-  YN_div.style.display="block"
-  Date_div.style.display="block"
-  habit_div.style.display="block"
-  goal_div.style.display="block"
-  submit.style.display="block"
-  addNewH.style.display="none"
+  // option_div.style.display="block"
+  // YN_div.style.display="block"
+  // Date_div.style.display="block"
+  // habit_div.style.display="block"
+  // goal_div.style.display="block"
+  // submit.style.display="block"
+  // addNewH.style.display="none"
 
 
 
