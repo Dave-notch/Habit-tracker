@@ -28,6 +28,10 @@ html, body {
   box-sizing: border-box;
 }
 
+.soosiki{
+  margin-left: 1rem;
+}
+
 nav {
   position: fixed;
   top: 0;

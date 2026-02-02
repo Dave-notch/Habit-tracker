@@ -2,6 +2,7 @@ let addNewH=document.getElementById("addNewH");
 let FloatingBtn=document.getElementById("FloatingBtn");
 let showResults = document.querySelector(".showResults");
 let resultArea  = document.querySelector(".resultArea");
+let bigspent=document.getElementById("bigspent");
 
 
 const toggle = document.querySelector(".menu-toggle");
@@ -102,7 +103,7 @@ links.classList.toggle("active");
               <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
                 <div>hour/min</div>
                 <div>seconds</div>
-                <div class="daylabel">day</div>
+                <div class="daylabel">days</div>
                 </div>
                 <div class="flex flex-col text-white text-3xl flex justify-center items-center">
                     <div class="flex flex-row gap-4">
@@ -117,7 +118,7 @@ links.classList.toggle("active");
                       <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays">0</div>
                     </div>
                 </div>
-                <div class="bg-green-200 w-220 h-135  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
+                <div class="bg-green-200 w-220 h-137  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
                   <div class="flex justify-center">
                   <div  class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
                   </div>
@@ -140,30 +141,26 @@ links.classList.toggle("active");
                       <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
                       <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box SpentDisplay">$ 0</div>
                     </div>
-                    
+                    <button class="text-white mb-10 bg-red-500 rounded-2xl w-30 h-10 text-center remove">remove</button>
                 </div>
-                  
-
                 </div>
               </div>
              </div>`
              
 
-              let form_add = document.querySelector(".form_add");
-       
+      let form_add = document.querySelector(".form_add");
       form_add.insertAdjacentHTML("beforeend", dynamicInput); 
       addNewH.style.display="none"
-          
-let form = form_add.lastElementChild;
-
+   
+      let form = form_add.lastElementChild;
       let submit         = form.querySelector(".Submit");
       let inputform=form.querySelector(".inputform");
 
-          let noCheck        = form.querySelector(".noCheck");
-          let NO        = form.querySelector(".NO");
-          let yesCheck       = form.querySelector(".yesCheck");
-          let AmountSpent      = form.querySelector(".AmountSpent");
-          
+      let noCheck        = form.querySelector(".noCheck");
+      let NO        = form.querySelector(".NO");
+      let yesCheck       = form.querySelector(".yesCheck");
+      let AmountSpent      = form.querySelector(".AmountSpent");
+      
 
       yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
@@ -188,11 +185,12 @@ let form = form_add.lastElementChild;
 
 
    })
+   
+
+
   
 
 
-
-  
 
  let counter=0
  let resultAreaContent = document.querySelector(".resultAreaContent");
@@ -213,11 +211,15 @@ let form = form_add.lastElementChild;
     let spent=form.querySelector(".Amount_Input").value
     let ErrorMessage=form.querySelector(".ErrorMessage");
 
+    bigspent.innerHTML=spent
+
     if(hapit && showDate && daysGoal && select){
     resultAreaContent.insertAdjacentHTML("beforeend", newdiv);
     const card = resultAreaContent.lastElementChild; 
 
     let dateDisplay   = card.querySelector(".dateDisplay");
+    let remove   = card.querySelector(".remove");
+    
     
     let SpentDisplay  = card.querySelector(".SpentDisplay");
     let goalDisplay   = card.querySelector(".goalDisplay");
@@ -239,6 +241,15 @@ let form = form_add.lastElementChild;
     let seconds = card.querySelector(".seconds");
     let startingSeconds=1;
       let time=startingSeconds;
+
+    let habit = {
+      name: hapit,
+      date: showDate,
+      goal: daysGoal,
+      type: select,
+      spent: spent
+    };
+
 
       let mincounter=0;
       let hourCounter=0;
@@ -270,7 +281,6 @@ let form = form_add.lastElementChild;
           
         if(spent<10){
         SpentDisplay.innerHTML=`$ 0${spent}`
-        SpentOn.style.opacity=1
           
         }else{
           SpentDisplay.innerHTML=`$ ${spent}`
@@ -281,7 +291,9 @@ let form = form_add.lastElementChild;
      goalDisplay.innerHTML=`${daysGoal} Days`
 
      option_select.innerHTML=select
-
+remove.addEventListener("click",()=>{
+      localStorage.removeItem("cards")
+    })
 
 
      RMminutes.innerHTML = mins;
@@ -344,10 +356,10 @@ let form = form_add.lastElementChild;
 
     if (dayCounter < 10) {
       days.innerHTML = "0" + dayCounter;
-      daylabel.innerHTML="day"
+  
     } else {
       days.innerHTML = dayCounter;
-      daylabel.innerHTML="days"
+     
     }
 
     if(days==0){
@@ -415,18 +427,12 @@ let form = form_add.lastElementChild;
     } else {
       RMdays.innerHTML = "0" + daysGoal;
     }
+    
+  
 
   }
 
-  
-
-  }, 1000)
-     
-           
-                  
-     }
-
-
+  }, 1000)}
      
         intervalStarted = true; 
         NO.style.display="none"
@@ -439,6 +445,8 @@ let form = form_add.lastElementChild;
 
            counter+=1
            Counter.innerHTML=counter
+
+          
            
 
 
@@ -459,8 +467,6 @@ let form = form_add.lastElementChild;
       SpentOn.style.opacity=0
     }
 
-    
-
              
     yesCheck.addEventListener("change",(e)=>{
     if(e.target.checked){
@@ -476,20 +482,18 @@ let form = form_add.lastElementChild;
     }
   })
 
-      
-
-
-
+ localStorage.setItem("cards", resultAreaContent.innerHTML)
 
     })
 
+  window.addEventListener("DOMContentLoaded",()=>{
+    
+    let saved=localStorage.getItem("cards")
+    if(saved){
+      resultAreaContent.innerHTML=saved
+      emptyMessege.style.display="none"
+    }
+   })
 
-
-
-
-
-
-  
-
-
-  
+   localStorage.clear()
+   
