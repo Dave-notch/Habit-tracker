@@ -146,6 +146,8 @@ links.classList.toggle("active");
                 </div>
               </div>
              </div>`
+
+             
              
 
       let form_add = document.querySelector(".form_add");
@@ -432,7 +434,7 @@ remove.addEventListener("click",()=>{
 
   }
 
-  }, 1000)}
+  }, 1)}
      
         intervalStarted = true; 
         NO.style.display="none"
@@ -496,4 +498,6 @@ remove.addEventListener("click",()=>{
    })
 
    localStorage.clear()
+   
+
    
