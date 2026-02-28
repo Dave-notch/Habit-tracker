@@ -124,7 +124,7 @@ links.classList.toggle("active");
                   </div>
                   <div class="">
                   </div>
-                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
+                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center ColBoxes">
                     <div class="flex flex-row gap-70 flex justify-center items-center "> 
                       <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
                       <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" ></div>
@@ -141,7 +141,7 @@ links.classList.toggle("active");
                       <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
                       <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box SpentDisplay">$ 0</div>
                     </div>
-                    <button class="text-white mb-10 bg-red-500 rounded-2xl w-30 h-10 text-center cursor-pointer remove">remove</button>
+                    
                 </div>
                 </div>
               </div>
@@ -192,8 +192,8 @@ links.classList.toggle("active");
 
   
 
- let remove;
 
+ let remove
  let counter=0
  let resultAreaContent = document.querySelector(".resultAreaContent");
 
@@ -221,15 +221,14 @@ links.classList.toggle("active");
     const card = resultAreaContent.lastElementChild; 
 
     let dateDisplay   = card.querySelector(".dateDisplay");
-
     
     
+    let ColBoxes=card.querySelector(".ColBoxes");
     let SpentDisplay  = card.querySelector(".SpentDisplay");
     let goalDisplay   = card.querySelector(".goalDisplay");
     let option_select = card.querySelector(".option_select");
     let SpentOn          = card.querySelector(".SpentOn");
     let habitName = card.querySelector(".habitName");
-    remove= card.querySelector(".remove");
 
     let days      = card.querySelector(".days");
     let daylabel  = card.querySelector(".daylabel");
@@ -246,13 +245,20 @@ links.classList.toggle("active");
     let startingSeconds=1;
       let time=startingSeconds;
 
-    let habit = {
-      name: hapit,
-      date: showDate,
-      goal: daysGoal,
-      type: select,
-      spent: spent
-    };
+    // let habit = {
+    //   name: hapit,
+    //   date: showDate,
+    //   goal: daysGoal,
+    //   type: select,
+    //   spent: spent
+    // };
+
+
+     remove=`<button class="text-white mb-10 bg-red-500 rounded-2xl w-30 h-10 text-center remove">remove</button>`
+
+    ColBoxes.insertAdjacentHTML("beforeend", remove);
+
+   
 
 
       let mincounter=0;
@@ -297,7 +303,6 @@ links.classList.toggle("active");
      goalDisplay.innerHTML=`${daysGoal} Days`
 
      option_select.innerHTML=select
-
 
 
 
@@ -436,13 +441,7 @@ links.classList.toggle("active");
   
 
   }
- remove.addEventListener("click", ()=>{
-    card.remove(); // remove from DOM
 
-  // update localStorage
-  localStorage.setItem("cards", resultAreaContent.innerHTML);
- })
-   
   }, 1000)}
      
         intervalStarted = true; 
@@ -507,6 +506,59 @@ links.classList.toggle("active");
    })
 
 
-   
+ remove.addEventListener("click", ()=>{
+  localStorage.removeItem("newdiv")
+ })
 
-//  localStorage.clear()
+     
+
+
+
+ <div class="snap-start">
+              <div class="flex flex-col gap-2 ">
+              <div class="flex flex-row gap-30 text-xl justify-center  timer-ttle">
+                <div>hour/min</div>
+                <div>seconds</div>
+                <div class="daylabel">days</div>
+                </div>
+                <div class="flex flex-col text-white text-3xl flex justify-center items-center">
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none"><span class="hours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span class="minutes">00</span></div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none seconds">0</div>
+                      <div class="bg-red-400 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-bl-none rounded-br-none days">0</div>
+                    </div>
+
+                    <div class="flex flex-row gap-4">
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none"><span class="RMhours">00</span><span style="font-weight:900;font-size:2rem;">:</span><span class="RMminutes">00</span></div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMseconds">0</div>
+                      <div class="bg-green-500 w-30 h-14 rounded-xl flex justify-center items-center Timer-boxes2 rounded-tl-none rounded-tr-none RMdays">0</div>
+                    </div>
+                </div>
+                <div class="bg-green-200 w-220 h-137  rounded-4xl shadow-3xl border border:blue-200 text-xl flex-col gap-2 font-semibold innerGR2-div ">
+                  <div class="flex justify-center">
+                  <div  class="font-semibold text-white text-3xl bg-red-400 w-30 h-10 rounded-4xl text-center habitName"></div>
+                  </div>
+                  <div class="">
+                  </div>
+                  <div class="flex flex-col gap-4 text-white text-3xl  justify-center items-center Col-Boxes">
+                    <div class="flex flex-row gap-70 flex justify-center items-center "> 
+                      <div class="text-black flex  items-center  w-50 h-10 text-indic">the date you started</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box dateDisplay" ></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Quiting or Developing</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box option_select"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center ">
+                      <div class="text-black flex  items-center   w-50 h-10 text-indic">Your Goal</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box goalDisplay"></div>
+                    </div>
+                    <div class="flex flex-row gap-70 flex justify-center items-center SpentOn ">
+                      <div class="text-black flex items-center   w-50 h-10 text-indic" id="spentTtl">you've spent</div>
+                      <div class="bg-blue-400 w-30 h-25 rounded-xl flex justify-center items-center Col-Box SpentDisplay">$ 0</div>
+                    </div>
+                    <button class="text-white mb-10 bg-red-500 rounded-2xl w-30 h-10 text-center cursor-pointer remove">remove</button>
+                </div>
+                </div>
+              </div>
+             </div>
